@@ -2874,7 +2874,7 @@
 .end method
 
 .method private processStateInput(IILandroid/view/KeyEvent;Z)Z
-    .registers 15
+    .registers 16
     .parameter "keyChar"
     .parameter "keyCode"
     .parameter "event"
@@ -2893,14 +2893,28 @@
 
     .line 755
     :cond_83
-    # if (keyChar >= 'a' && keyChar <= 'z'
+    #
+    # The keyChar calculated in processKey() ignored Alt key state, so it may
+    # not be the real 'a'..'z' key, we should use getUnicodeChar() instead.
+    #
+    # v10 = event.getUnicodeChar();
+    # if ((v10 >= 'A' && v10 <= 'Z') || (v10 >= 'a' && v10 <= 'z')
+    invoke-virtual {p3}, Landroid/view/KeyEvent;->getUnicodeChar()I
+    move-result v10
+
+    const/16 v3, 0x41
+    if-lt v10, v3, :cond_8b
+
+    const/16 v3, 0x5a
+    if-le v10, v3, :cond_9b
+
     const/16 v3, 0x61
 
-    if-lt p1, v3, :cond_8b
+    if-lt v10, v3, :cond_8b
 
     const/16 v3, 0x7a
 
-    if-le p1, v3, :cond_9b
+    if-le v10, v3, :cond_9b
 
     :cond_8b
     # || keyChar == '\''
@@ -3460,7 +3474,7 @@
 .end method
 
 .method private processStatePredict(IILandroid/view/KeyEvent;Z)Z
-    .registers 14
+    .registers 15
     .parameter "keyChar"
     .parameter "keyCode"
     .parameter "event"
@@ -3479,16 +3493,31 @@
 
     .line 868
     :cond_58
-    # if (keyChar >= 'a' && keyChar <= 'z')
+    #
+    # The keyChar calculated in processKey() ignored Alt key state, so it may
+    # not be the real 'a'..'z' key, we should use getUnicodeChar() instead.
+    #
+    # v9 = event.getUnicodeChar();
+    # if ((v9 >= 'A' && v9 <= 'Z') || (v9 >= 'a' && v9 <= 'z')
+    invoke-virtual {p3}, Landroid/view/KeyEvent;->getUnicodeChar()I
+    move-result v9
+
+    const/16 v3, 0x41
+    if-lt v9, v3, :cond_70
+
+    const/16 v3, 0x5a
+    if-le v9, v3, :isAlphabetChar
+
     const/16 v3, 0x61
 
-    if-lt p1, v3, :cond_70
+    if-lt v9, v3, :cond_70
 
     const/16 v3, 0x7a
 
-    if-gt p1, v3, :cond_70
+    if-gt v9, v3, :cond_70
 
     .line 869
+    :isAlphabetChar
     if-eqz p4, :cond_6e
 
     .line 870
