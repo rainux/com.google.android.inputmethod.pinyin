@@ -2893,6 +2893,7 @@
 
     .line 755
     :cond_83
+    # if (keyChar >= 'a' && keyChar <= 'z'
     const/16 v3, 0x61
 
     if-lt p1, v3, :cond_8b
@@ -2902,10 +2903,12 @@
     if-le p1, v3, :cond_9b
 
     :cond_8b
+    # || keyChar == '\''
     const/16 v3, 0x27
 
     if-ne p1, v3, :cond_97
 
+    # && !mDecInfo.charBeforeCursorIsSeparator()
     iget-object v3, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mDecInfo:Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;
 
     invoke-virtual {v3}, Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;->charBeforeCursorIsSeparator()Z
@@ -2915,6 +2918,7 @@
     if-eqz v3, :cond_9b
 
     :cond_97
+    # || keyCode == KeyEvent.KEYCODE_DEL)
     const/16 v3, 0x43
 
     if-ne p2, v3, :cond_a4
@@ -3475,6 +3479,7 @@
 
     .line 868
     :cond_58
+    # if (keyChar >= 'a' && keyChar <= 'z')
     const/16 v3, 0x61
 
     if-lt p1, v3, :cond_70
