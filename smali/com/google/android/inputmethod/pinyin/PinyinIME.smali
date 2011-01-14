@@ -2891,166 +2891,6 @@
 
     const/4 v6, 0x1
 
-    .line 720
-    invoke-virtual {p3}, Landroid/view/KeyEvent;->isAltPressed()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_83
-
-    .line 721
-    const/16 v3, 0x27
-
-    invoke-virtual {p3}, Landroid/view/KeyEvent;->getMetaState()I
-
-    move-result v4
-
-    invoke-virtual {p3, v4}, Landroid/view/KeyEvent;->getUnicodeChar(I)I
-
-    move-result v4
-
-    if-eq v3, v4, :cond_81
-
-    .line 722
-    if-eqz p4, :cond_7f
-
-    .line 723
-    invoke-virtual {p3}, Landroid/view/KeyEvent;->getUnicodeChar()I
-
-    move-result v3
-
-    int-to-char v3, v3
-
-    invoke-static {v3}, Lcom/google/android/inputmethod/pinyin/KeyMap;->getChineseLabel(C)C
-
-    move-result v2
-
-    .line 724
-    .local v2, fullwidth_char:C
-    if-eqz v2, :cond_7f
-
-    .line 726
-    const/16 v3, 0x30
-
-    if-lt v2, v3, :cond_54
-
-    const/16 v3, 0x39
-
-    if-gt v2, v3, :cond_54
-
-    .line 727
-    const/16 v3, 0x30
-
-    if-ne v2, v3, :cond_34
-
-    .line 728
-    const/16 v2, 0x3a
-
-    .line 730
-    :cond_34
-    const/16 v3, 0x31
-
-    sub-int v0, v2, v3
-
-    .line 731
-    .local v0, activePos:I
-    iget-object v3, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mCandidatesContainer:Lcom/google/android/inputmethod/pinyin/CandidatesContainer;
-
-    invoke-virtual {v3}, Lcom/google/android/inputmethod/pinyin/CandidatesContainer;->getCurrentPage()I
-
-    move-result v1
-
-    .line 732
-    .local v1, currentPage:I
-    iget-object v3, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mDecInfo:Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;
-
-    invoke-virtual {v3, v1}, Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;->getCurrentPageSize(I)I
-
-    move-result v3
-
-    if-ge v0, v3, :cond_52
-
-    .line 733
-    iget-object v3, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mDecInfo:Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;
-
-    invoke-virtual {v3, v1}, Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;->getCurrentPageStart(I)I
-
-    move-result v3
-
-    add-int/2addr v0, v3
-
-    .line 735
-    if-ltz v0, :cond_52
-
-    .line 736
-    invoke-direct {p0, v0, v6}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->chooseAndUpdate(IZ)V
-
-    :cond_52
-    move v3, v6
-
-    .line 832
-    .end local v0           #activePos:I
-    .end local v1           #currentPage:I
-    .end local v2           #fullwidth_char:C
-    :goto_53
-    return v3
-
-    .line 741
-    .restart local v2       #fullwidth_char:C
-    :cond_54
-    invoke-static {v2}, Lcom/google/android/inputmethod/pinyin/KeyMap;->mayToggleQuotaMark(C)C
-
-    move-result v2
-
-    .line 742
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    iget-object v4, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mDecInfo:Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;
-
-    iget-object v5, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mCandidatesContainer:Lcom/google/android/inputmethod/pinyin/CandidatesContainer;
-
-    invoke-virtual {v5}, Lcom/google/android/inputmethod/pinyin/CandidatesContainer;->getActiveCandiatePos()I
-
-    move-result v5
-
-    invoke-virtual {v4, v5}, Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;->getCurrentFullSent(I)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-static {v2}, Ljava/lang/String;->valueOf(C)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {p0, v3}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->commitResultText(Ljava/lang/String;)V
-
-    .line 746
-    invoke-direct {p0, v7}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->resetToIdleState(Z)V
-
-    .end local v2           #fullwidth_char:C
-    :cond_7f
-    move v3, v6
-
-    .line 749
-    goto :goto_53
-
-    .line 751
-    :cond_81
-    const/16 p1, 0x27
-
     .line 755
     :cond_83
     const/16 v3, 0x61
@@ -3426,7 +3266,7 @@
     :cond_1a1
     const/4 v3, 0x4
 
-    if-ne p2, v3, :cond_1b2
+    if-ne p2, v3, :convertPunctuation
 
     .line 827
     if-nez p4, :cond_1a9
@@ -3447,11 +3287,172 @@
     .line 830
     goto/16 :goto_53
 
-    :cond_1b2
-    move v3, v7
+    :convertPunctuation
+    # .line 720
+    # invoke-virtual {p3}, Landroid/view/KeyEvent;->isAltPressed()Z
+
+    # move-result v3
+
+    # if-eqz v3, :cond_83
+
+    # .line 721
+    # const/16 v3, 0x27
+
+    # invoke-virtual {p3}, Landroid/view/KeyEvent;->getMetaState()I
+
+    # move-result v4
+
+    # invoke-virtual {p3, v4}, Landroid/view/KeyEvent;->getUnicodeChar(I)I
+
+    # move-result v4
+
+    # if-eq v3, v4, :cond_81
+
+    .line 722
+    if-eqz p4, :cond_7f
+
+    .line 723
+    invoke-virtual {p3}, Landroid/view/KeyEvent;->getUnicodeChar()I
+
+    move-result v3
+
+    int-to-char v3, v3
+
+    invoke-static {v3}, Lcom/google/android/inputmethod/pinyin/KeyMap;->getChineseLabel(C)C
+
+    move-result v2
+
+    .line 724
+    .local v2, fullwidth_char:C
+    if-eqz v2, :cond_7f
+
+    .line 726
+    const/16 v3, 0x30
+
+    if-lt v2, v3, :cond_54
+
+    const/16 v3, 0x39
+
+    if-gt v2, v3, :cond_54
+
+    .line 727
+    const/16 v3, 0x30
+
+    if-ne v2, v3, :cond_34
+
+    .line 728
+    const/16 v2, 0x3a
+
+    .line 730
+    :cond_34
+    const/16 v3, 0x31
+
+    sub-int v0, v2, v3
+
+    .line 731
+    .local v0, activePos:I
+    iget-object v3, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mCandidatesContainer:Lcom/google/android/inputmethod/pinyin/CandidatesContainer;
+
+    invoke-virtual {v3}, Lcom/google/android/inputmethod/pinyin/CandidatesContainer;->getCurrentPage()I
+
+    move-result v1
+
+    .line 732
+    .local v1, currentPage:I
+    iget-object v3, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mDecInfo:Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;
+
+    invoke-virtual {v3, v1}, Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;->getCurrentPageSize(I)I
+
+    move-result v3
+
+    if-ge v0, v3, :cond_52
+
+    .line 733
+    iget-object v3, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mDecInfo:Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;
+
+    invoke-virtual {v3, v1}, Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;->getCurrentPageStart(I)I
+
+    move-result v3
+
+    add-int/2addr v0, v3
+
+    .line 735
+    if-ltz v0, :cond_52
+
+    .line 736
+    invoke-direct {p0, v0, v6}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->chooseAndUpdate(IZ)V
+
+    :cond_52
+    move v3, v6
 
     .line 832
-    goto/16 :goto_53
+    .end local v0           #activePos:I
+    .end local v1           #currentPage:I
+    .end local v2           #fullwidth_char:C
+    :goto_53
+    return v3
+
+    .line 741
+    .restart local v2       #fullwidth_char:C
+    :cond_54
+    invoke-static {v2}, Lcom/google/android/inputmethod/pinyin/KeyMap;->mayToggleQuotaMark(C)C
+
+    move-result v2
+
+    .line 742
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    iget-object v4, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mDecInfo:Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;
+
+    iget-object v5, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mCandidatesContainer:Lcom/google/android/inputmethod/pinyin/CandidatesContainer;
+
+    invoke-virtual {v5}, Lcom/google/android/inputmethod/pinyin/CandidatesContainer;->getActiveCandiatePos()I
+
+    move-result v5
+
+    invoke-virtual {v4, v5}, Lcom/google/android/inputmethod/pinyin/PinyinIME$DecodingInfo;->getCurrentFullSent(I)Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-static {v2}, Ljava/lang/String;->valueOf(C)Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {p0, v3}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->commitResultText(Ljava/lang/String;)V
+
+    .line 746
+    invoke-direct {p0, v7}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->resetToIdleState(Z)V
+
+    .end local v2           #fullwidth_char:C
+    :cond_7f
+    move v3, v6
+
+    .line 749
+    goto :goto_53
+
+    # .line 751
+    # :cond_81
+    # const/16 p1, 0x27
+
+    # :cond_1b2
+    # move v3, v7
+
+    # .line 832
+    # goto/16 :goto_53
 .end method
 
 .method private processStatePredict(IILandroid/view/KeyEvent;Z)Z
