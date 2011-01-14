@@ -2748,11 +2748,15 @@
 
     .line 684
     :cond_6d
-    invoke-virtual {p3}, Landroid/view/KeyEvent;->isAltPressed()Z
+    #
+    # Should try convert any key to Chinese punctuation here, not just when
+    # Alt pressed.
+    #
+    # invoke-virtual {p3}, Landroid/view/KeyEvent;->isAltPressed()Z
 
-    move-result v2
+    # move-result v2
 
-    if-eqz v2, :cond_98
+    # if-eqz v2, :cond_98
 
     .line 685
     invoke-virtual {p3}, Landroid/view/KeyEvent;->getUnicodeChar()I
