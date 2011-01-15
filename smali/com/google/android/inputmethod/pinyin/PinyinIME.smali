@@ -2645,11 +2645,13 @@
 
     .line 660
     :cond_22
+    # if (keyCode == KeyEvent.KEYCODE_DEL)
     const/16 v2, 0x43
 
     if-ne p2, v2, :cond_2f
 
     .line 661
+    # if (!realAction) return true;
     if-nez p4, :cond_2a
 
     move v2, v4
@@ -2660,6 +2662,7 @@
     :cond_2a
     invoke-direct {p0, p2}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->simulateKeyEventDownUp(I)V
 
+    # return true;
     move v2, v4
 
     .line 667
@@ -3635,17 +3638,20 @@
 
     .line 899
     :cond_b7
+    # else if (keyCode == KeyEvent.KEYCODE_DEL)
     const/16 v3, 0x43
 
     if-ne p2, v3, :cond_c2
 
     .line 900
+    # if (!realAction)
     if-eqz p4, :cond_c0
 
     .line 901
     invoke-direct {p0, v6}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->resetToIdleState(Z)V
 
     :cond_c0
+    # return true;
     move v3, v5
 
     .line 903
