@@ -2645,16 +2645,27 @@
 
     .line 660
     :cond_22
-    # if (keyCode == KeyEvent.KEYCODE_DEL)
+    #
+    # By-pass the key event for these keys to make default key listener handle
+    # it, this will get back correct Alt + Del behavior: Delete current line.
+    #
+    # if (keyCode == KeyEvent.KEYCODE_DEL ||
+    #     keyCode == KeyEvent.KEYCODE_ALT_LEFT ||
+    #     keyCode == KeyEvent.KEYCODE_ALT_RIGHT)
     const/16 v2, 0x43
+    if-eq p2, v2, :returnFalse_0
 
-    if-ne p2, v2, :cond_2f
+    const/16 v2, 0x39
+    if-eq p2, v2, :returnFalse_0
+
+    const/16 v2, 0x3a
+    if-eq p2, v2, :returnFalse_0
+
+    goto :cond_2f
 
     .line 661
-    # if (!realAction) return true;
-    if-nez p4, :cond_2a
-
-    move v2, v4
+    :returnFalse_0
+    move v2, v5
 
     goto :goto_15
 
@@ -3638,14 +3649,34 @@
 
     .line 899
     :cond_b7
+    # else if (keyCode == KeyEvent.KEYCODE_ALT_LEFT ||
+    #          keyCode == KeyEvent.KEYCODE_ALT_RIGHT)
+    const/16 v3, 0x39
+    if-eq p2, v3, :returnFalse_1
+
+    const/16 v3, 0x3a
+    if-eq p2, v3, :returnFalse_1
+
+    goto :checkDelKey_0
+
+    :returnFalse_1
+    move v3, v6
+    goto :goto_47
+
     # else if (keyCode == KeyEvent.KEYCODE_DEL)
+    :checkDelKey_0
     const/16 v3, 0x43
 
     if-ne p2, v3, :cond_c2
 
     .line 900
     # if (!realAction)
-    if-eqz p4, :cond_c0
+    # if-eqz p4, :cond_c0
+
+    # if (event.isAltPressed())
+    invoke-virtual {p3}, Landroid/view/KeyEvent;->isAltPressed()Z
+    move-result v3
+    if-nez v3, :returnFalse_1
 
     .line 901
     invoke-direct {p0, v6}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->resetToIdleState(Z)V
