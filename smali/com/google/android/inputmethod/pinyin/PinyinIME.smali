@@ -2951,6 +2951,15 @@
 
     if-ne p2, v3, :cond_a4
 
+    #
+    # Make Alt + Del drop all pinyin characters and back to idle state just
+    # like Back key does.
+    #
+    # if (event.isAltPressed())
+    invoke-virtual {p3}, Landroid/view/KeyEvent;->isAltPressed()Z
+    move-result v3
+    if-nez v3, :resetToIdleState_0
+
     .line 758
     :cond_9b
     if-nez p4, :cond_9f
@@ -3298,17 +3307,17 @@
     :cond_1a1
     const/4 v3, 0x4
 
-    if-ne p2, v3, :convertPunctuation
+    if-ne p2, v3, :checkAltKeys_0
 
     .line 827
-    if-nez p4, :cond_1a9
+    if-nez p4, :resetToIdleState_0
 
     move v3, v6
 
     goto/16 :goto_53
 
     .line 828
-    :cond_1a9
+    :resetToIdleState_0
     invoke-direct {p0, v7}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->resetToIdleState(Z)V
 
     .line 829
@@ -3318,6 +3327,19 @@
 
     .line 830
     goto/16 :goto_53
+
+    :checkAltKeys_0
+    #
+    # By-pass the key event for Alt keys to make default key listener handle
+    # it.
+    #
+    # else if (keyCode == KeyEvent.KEYCODE_ALT_LEFT ||
+    #          keyCode == KeyEvent.KEYCODE_ALT_RIGHT)
+    const/16 v3, 0x39
+    if-eq p2, v3, :returnFalse_2
+
+    const/16 v3, 0x3a
+    if-eq p2, v3, :returnFalse_2
 
     :convertPunctuation
     # .line 720
@@ -3480,11 +3502,11 @@
     # :cond_81
     # const/16 p1, 0x27
 
-    # :cond_1b2
-    # move v3, v7
+    :returnFalse_2
+    move v3, v7
 
-    # .line 832
-    # goto/16 :goto_53
+    .line 832
+    goto/16 :goto_53
 .end method
 
 .method private processStatePredict(IILandroid/view/KeyEvent;Z)Z
