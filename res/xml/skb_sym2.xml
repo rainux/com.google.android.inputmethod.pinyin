@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <keyboard skb_template="@xml/skb_template1" skb_cache_flag="true" width="10%p" height="25%p" key_type="0" repeat="false" balloon="true">
     <row>
-        <keys splitter="\u0020" labels="&amp;amp; | + × ÷ = &amp;lt; > { }" />
+        <keys splitter="\u0020" labels="&amp; | + × ÷ = &lt; > { }" />
     </row>
     <row>
         <keys splitter="|" labels="￥|£|€|^|℉|℃|‰|\\|《|》" />

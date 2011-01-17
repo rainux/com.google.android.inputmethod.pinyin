@@ -21,7 +21,7 @@
     <row>
         <key label="^_^" icon="@drawable/emotion_icon_15" icon_popup="@drawable/emotion_icon_15_popup" />
         <key label="囧" icon="@drawable/emotion_icon_16" icon_popup="@drawable/emotion_icon_16_popup" />
-        <key label=">_&amp;lt;" icon="@drawable/emotion_icon_17" icon_popup="@drawable/emotion_icon_17_popup" />
+        <key label=">_&lt;" icon="@drawable/emotion_icon_17" icon_popup="@drawable/emotion_icon_17_popup" />
         <key label="╰_╯" icon="@drawable/emotion_icon_18" icon_popup="@drawable/emotion_icon_18_popup" />
         <key label="﹁_﹁" icon="@drawable/emotion_icon_19" icon_popup="@drawable/emotion_icon_19_popup" />
         <key label="-_-z" icon="@drawable/emotion_icon_20" icon_popup="@drawable/emotion_icon_20_popup" />
