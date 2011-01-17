@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keyboard skb_template="@xml/skb_template1" skb_cache_flag="true" width="10%p" height="25%p" key_type="0" repeat="false" balloon="true">
+    <row>
+        <keys splitter="|" labels="1|2|3|4|5|6|7|8|9|0" codes="8|9|10|11|12|13|14|15|16|7" />
+    </row>
+    <row>
+        <keys splitter="|" labels="\@|#|$|%|*|/|-" />
+        <key label="、" icon="@drawable/dun_icon" icon_popup="@drawable/dun_popup_icon">
+            <toggle_state state_id="@string/toggle_en_sym1" label="\\" />
+        </key>
+        <keys splitter="|" labels="(|)" />
+    </row>
+    <row width="10.205%p">
+        <key code="-5" width="14.286%p" key_type="2" label="更多" />
+        <key label="—">
+            <toggle_state state_id="@string/toggle_en_sym1" label="_" />
+        </key>
+        <key label="“" icon="@drawable/full_quota_left" icon_popup="@drawable/full_quota_left_popup">
+            <toggle_state state_id="@string/toggle_double_quote_close" label="”" icon="@drawable/full_quota_right" icon_popup="@drawable/full_quota_right_popup" />
+            <toggle_state state_id="@string/toggle_en_sym1" label="\&quot;" />
+        </key>
+        <key label="‘" icon="@drawable/single_quota_left" icon_popup="@drawable/single_quota_left_popup">
+            <toggle_state icon="@drawable/single_quota_right" icon_popup="@drawable/single_quota_right_popup" state_id="@string/toggle_single_quote_close" label="’" />
+            <toggle_state state_id="@string/toggle_en_sym1" label="\'" />
+        </key>
+        <key label="：">
+            <toggle_state state_id="@string/toggle_en_sym1" label=":" />
+        </key>
+        <key label="；">
+            <toggle_state state_id="@string/toggle_en_sym1" label=";" />
+        </key>
+        <key label="…">
+            <toggle_state state_id="@string/toggle_en_sym1" label="..." />
+        </key>
+        <key label="～">
+            <toggle_state state_id="@string/toggle_en_sym1" label="~" />
+        </key>
+        <key id="3" />
+    </row>
+    <row width="14.696%p" key_type="1">
+        <key id="16" />
+        <key label="？" key_type="0" width="10.205%p">
+            <toggle_state state_id="@string/toggle_en_sym1" label="\?" />
+        </key>
+        <key label="！" key_type="0" width="10.205%p">
+            <toggle_state state_id="@string/toggle_en_sym1" label="!" />
+        </key>
+        <key code="62" key_type="5" width="26.527%p" />
+        <key label="." key_type="0" width="10.205%p" />
+        <key id="14" />
+        <key code="-6" key_type="2" width="14.286%p" icon="@drawable/smiley_icon" icon_popup="@drawable/smiley_popup_icon" />
+    </row>
+</keyboard>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <item type="id" name="webview">false</item>
+    <item type="id" name="progress">false</item>
+    <item type="id" name="candidates_container">false</item>
+    <item type="id" name="arrow_left_btn">false</item>
+    <item type="id" name="candidate_flipper">false</item>
+    <item type="id" name="candidate_view1">false</item>
+    <item type="id" name="candidate_view2">false</item>
+    <item type="id" name="arrow_right_btn">false</item>
+    <item type="id" name="floating_container">false</item>
+    <item type="id" name="composing_view">false</item>
+    <item type="id" name="help_view">false</item>
+    <item type="id" name="hand_image_view">false</item>
+    <item type="id" name="back_button">false</item>
+    <item type="id" name="next_button">false</item>
+    <item type="id" name="message">false</item>
+    <item type="id" name="capcha">false</item>
+    <item type="id" name="input">false</item>
+    <item type="id" name="alpha_floatable">false</item>
+    <item type="id" name="alpha_view1">false</item>
+    <item type="id" name="alpha_view2">false</item>
+    <item type="id" name="move_over">false</item>
+    <item type="id" name="move_up">false</item>
+</resources>

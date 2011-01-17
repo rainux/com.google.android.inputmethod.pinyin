@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<set
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate android:id="@id/move_over" android:duration="1000" android:fillBefore="true" android:fillAfter="true" android:startOffset="1000" android:fromXDelta="100.0%p" android:toXDelta="39.999996%p" android:fromYDelta="60.000004%p" android:toYDelta="33.000004%p" />
+    <alpha android:duration="250" android:fillBefore="true" android:fillAfter="false" android:startOffset="3000" android:fromAlpha="1.0" android:toAlpha="0.0" />
+</set>

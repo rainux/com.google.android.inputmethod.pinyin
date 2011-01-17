@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <integer name="keyboard_portrait_height">4667</integer>
+    <integer name="keyboard_landscape_height">5833</integer>
+    <integer name="pinyin_spell_text_size">12</integer>
+    <integer name="tiny_text_size">14</integer>
+    <integer name="smaller_text_size">16</integer>
+    <integer name="small_text_size">22</integer>
+    <integer name="normal_text_size">32</integer>
+    <integer name="big_text_size">32</integer>
+    <integer name="footer_text_size">12</integer>
+    <integer name="footer_right_margin">12</integer>
+    <integer name="footer_bottom_margin">8</integer>
+</resources>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<input-method android:isDefault="@bool/im_is_default" android:settingsActivity="com.google.android.inputmethod.pinyin.SettingsActivity"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

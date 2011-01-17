@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="200" android:drawable="@drawable/img_finger_open" />
+    <item android:duration="200" android:drawable="@drawable/img_finger_close" />
+    <item android:duration="200" android:drawable="@drawable/img_finger_open" />
+</animation-list>

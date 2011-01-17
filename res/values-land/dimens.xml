@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <dimen name="candidate_margin_left_right">10.0dip</dimen>
+    <dimen name="composing_height">16.0dip</dimen>
+</resources>

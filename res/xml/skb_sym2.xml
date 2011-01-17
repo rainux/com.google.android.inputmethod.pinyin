@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keyboard skb_template="@xml/skb_template1" skb_cache_flag="true" width="10%p" height="25%p" key_type="0" repeat="false" balloon="true">
+    <row>
+        <keys splitter="\u0020" labels="&amp;amp; | + × ÷ = &amp;lt; > { }" />
+    </row>
+    <row>
+        <keys splitter="|" labels="￥|£|€|^|℉|℃|‰|\\|《|》" />
+    </row>
+    <row width="10.205%p">
+        <key code="-5" width="14.286%p" key_type="3" label="更多" />
+        <keys splitter="|" labels="™|©|®|•|[|]|√" />
+        <key id="3" width="14.286%" />
+    </row>
+    <row width="10.205%p" key_type="0">
+        <key key_type="1" id="16" width="14.286%" />
+        <keys splitter="|" labels="『|』" />
+        <key label=".com" icon="@drawable/dot_com_icon" icon_popup="@drawable/dot_com_icon_popup" />
+        <key label=".cn" icon="@drawable/dot_cn_icon" icon_popup="@drawable/dot_cn_icon_popup" />
+        <keys splitter="|" labels="㎡|【|】" />
+        <key code="-6" key_type="2" width="14.286%p" icon="@drawable/smiley_icon" icon_popup="@drawable/smiley_popup_icon" />
+    </row>
+</keyboard>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="ime_name">Google Pinyin</string>
+    <string name="ime_settings_activity_name">Google Pinyin settings</string>
+    <string name="ime_settings_choose_other_ime">Input Method</string>
+    <string name="setting">Google Pinyin settings</string>
+    <string name="setting_stroke_title">Stroke input</string>
+    <string name="setting_fault_tolerance_title">Stroke fault tolerance</string>
+    <string name="setting_sound_key_title">Sound feedback</string>
+    <string name="setting_vibrate_title">Vibrate when typing</string>
+    <string name="setting_prediction_chinese_title">Chinese prediction</string>
+    <string name="setting_prediction_english_title">English prediction</string>
+    <string name="setting_spell_correction_title">Auto spell correction</string>
+    <string name="setting_auto_capitalization_title">Auto capitalization</string>
+    <string name="setting_tradition_title">Traditional Chinese</string>
+    <string name="setting_switch_title">Hard switch key</string>
+    <string name="setting_switch_shift_space_title">Shift-space</string>
+    <string name="setting_enabled">Enabled</string>
+    <string name="setting_disabled">Disabled</string>
+    <string name="setting_others">Advanced settings</string>
+    <string name="setting_others_summary">User dictionary synchronization etc.</string>
+    <string name="account_label_username">Username: (i.e. johndoe@gmail.com)</string>
+    <string name="account_label_password">Password:</string>
+    <string name="account_label_login">Login</string>
+    <string name="account_label_cancel">Cancel</string>
+    <string name="account_title">Account login</string>
+    <string name="account_sign_up_title">Sign up</string>
+    <string name="account_signing_in_title">Login, please wait...</string>
+    <string name="setting_title">Google Pinyin advanced settings</string>
+    <string name="setting_update_category_title">Dictionary update</string>
+    <string name="setting_update_enabled_title">Dictionary update</string>
+    <string name="setting_sync_category_title">User dictionary synchronization</string>
+    <string name="setting_sync_enabled_title">Synchronize user dictionary</string>
+    <string name="setting_sync_now_title">Synchronize now</string>
+    <string name="setting_sync_cancel_title">Cancel synchronization</string>
+    <string name="setting_sync_clear_title">Clear server user dictionary</string>
+    <string name="setting_enabled_title">Enabled</string>
+    <string name="setting_disabled_title">Disabled</string>
+    <string name="status_bar_message_title">Google Pinyin</string>
+    <string name="status_bar_message_sync_title">Synchronizing user dictionary...</string>
+    <string name="status_bar_message_update_title">Downloading popular words...</string>
+    <string name="setting_dialog_sync_now_title">Confirm</string>
+    <string name="setting_dialog_sync_now_message">Synchronize now?</string>
+    <string name="setting_dialog_sync_clear_title">Note</string>
+    <string name="setting_dialog_sync_clear_message">User dictionary saved in server will be cleared and this operation is irreversible. If you really want to clear it, please input following number and continue.</string>
+    <string name="setting_error_sync_service_inactive">System service is inactive, operation failed.</string>
+    <string name="sign_up_url">https://www.google.com/accounts/NewAccount?hl=en</string>
+    <string name="setting_update_time">Last update:\u0020</string>
+    <string name="setting_sync_time">Last sync:\u0020</string>
+    <string name="setting_year">-</string>
+    <string name="setting_month">-</string>
+    <string name="setting_day">\u0020</string>
+    <string name="setting_hour">:</string>
+    <string name="setting_minute" />
+    <string name="setting_second" />
+    <string name="setting_sync_error">Synchronization failed</string>
+    <string name="setting_sync_ongoing">Synchronizing now...</string>
+    <string name="setting_sync_authentication_failed">Sorry, your user name and password do not match. Please try again.</string>
+    <string name="setting_update_error">Update failed</string>
+    <string name="setting_update_ongoing">Updating now...</string>
+    <string name="privacy_url">http://m.google.com/static/en/privacy.html</string>
+    <string name="tos_url">http://m.google.com/tospage?dc=gorganic&amp;hl=en</string>
+    <string name="setting_privacy_title">Privacy</string>
+    <string name="setting_tos_title">Term of service</string>
+    <string name="setting_about_title">About</string>
+    <string name="setting_about_version_title">Current version:\u0020</string>
+    <string name="setting_about_loading_title">Loading...</string>
+    <string name="touch_to_continue">Touch this hint to continue »</string>
+    <string name="touch_to_finish">Touch here to close this hint and start typing!</string>
+    <string name="tip_to_open_keyboard"><b>The keyboard opens any time you touch a text field, touch &amp; hold to switch to other IMEs</b></string>
+    <string name="tip_to_view_accents"><b>Switch between Chinese and English by touching this key</b></string>
+    <string name="tip_to_open_symbols"><b>Switch to numbers and symbols by touching this key</b></string>
+    <string name="tip_to_close_symbols"><b>Go back to letters by touching this key again</b></string>
+    <string name="tip_to_launch_settings"><b>Touch &amp; hold this key to change keyboard settings, or switch to other IMEs</b></string>
+    <string name="tip_to_select_candidate"><b>Touch a candidate or press space key for candidate selection</b></string>
+    <string name="tip_to_backspace"><b>Cancel candidate selection by touching this key</b></string>
+    <string name="tip_to_smart_key"><b>Smart key changes in different input context</b></string>
+    <string name="tip_to_start_typing"><b>Try it!</b></string>
+    <string name="default_device_name">Android</string>
+    <string name="next_button_label">Next</string>
+    <string name="back_button_label">Back</string>
+    <string name="skip_button_label">Skip</string>
+    <string name="done_button_label">Done</string>
+    <string name="keyboard_tutorial_title">Using the onscreen keyboard</string>
+    <string name="open_the_keyboard"><b><font size="17">Open the keyboard\n</font></b><font size="3">\n</font>Touch any text field.</string>
+    <string name="close_the_keyboard"><b><font size="17">Close the keyboard\n</font></b><font size="3">\n</font>Press the Back key.</string>
+    <string name="sync"><b><font size="17">Sync user dictionary\n</font></b><font size="3">\n</font>Enable or disable user dictionary synchronization in keyboard settings.</string>
+    <string name="keyboard_settings"><b><font size="17">Keyboard settings\n</font></b><font size="3">\n</font>Touch &amp; hold the <b>?123</b> key.</string>
+</resources>

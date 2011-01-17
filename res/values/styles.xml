@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <style name="setupWizardBodyTextPrimary" parent="@android:attr/textAppearanceMedium">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textColorHighlight">@color/highlight_color</item>
+        <item name="android:textColorLink">@color/link_color</item>
+    </style>
+    <style name="setupWizardBodyTextSecondary" parent="@android:attr/textAppearanceMedium">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textColorHighlight">@color/highlight_color</item>
+        <item name="android:textColorLink">@color/link_color</item>
+    </style>
+    <style name="setupWizardTextPrimarySmall" parent="@android:attr/textAppearanceSmall">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textColorHighlight">@color/highlight_color</item>
+        <item name="android:textColorLink">@color/link_color</item>
+    </style>
+    <style name="setupWizardTextSecondarySmall" parent="@android:attr/textAppearanceSmall">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textColorHighlight">@color/highlight_color</item>
+        <item name="android:textColorLink">@color/link_color</item>
+    </style>
+    <style name="setupWizardTitle">
+        <item name="android:textSize">22.0sp</item>
+        <item name="android:textColor">@color/title_color</item>
+    </style>
+    <style name="setupWizardTextPrimaryGreen">
+        <item name="android:textSize">17.0sp</item>
+        <item name="android:textColor">@color/title_color</item>
+    </style>
+</resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skb_template skb_bg="@drawable/skb_bg" key_xmargin="0%p" key_ymargin="0%p" balloon_bg="@drawable/key_balloon_bg" popup_bg="@drawable/miniskb_bg" color="@color/label_color" color_highlight="@color/label_color" color_balloon="@color/balloon_color">
+    <key_type id="0" bg="@drawable/normal_key_bg" hlbg="@drawable/normal_key_hl_bg" color_highlight="@color/label_color_hl0" />
+    <key_type id="1" bg="@drawable/function_key_bg" hlbg="@drawable/function_key_hl_bg" />
+    <key_type id="2" bg="@drawable/function_light_key_bg" hlbg="@drawable/function_light_key_hl_bg" />
+    <key_type id="3" bg="@drawable/function_light_key_up_bg" hlbg="@drawable/function_light_key_up_hl_bg" />
+    <key_type id="4" />
+    <key_type id="5" bg="@drawable/normal_key_bg" hlbg="@drawable/normal_key_hl_bg" color_highlight="@color/label_color_hl0" />
+    <key_icon code="66" icon="@drawable/enter_icon" icon_popup="@drawable/enter_popup_icon" />
+    <key_icon code="62" icon="@drawable/space_icon" icon_popup="@drawable/space_popup_icon" />
+    <key_icon code="67" icon="@drawable/delete_icon" icon_popup="@drawable/delete_popup_icon" />
+    <key id="1" start_pos_x="85.714%p" start_pos_y="75%p" width="14.491%p" height="25%p" code="66" key_type="1">
+        <toggle_state state_id="@string/toggle_enter_go" label="去往" code="66" />
+        <toggle_state state_id="@string/toggle_enter_search" code="66" icon="@drawable/search_icon" icon_popup="@drawable/search_popup_icon" />
+        <toggle_state state_id="@string/toggle_enter_send" label="发送" code="66" />
+        <toggle_state state_id="@string/toggle_enter_next" label="下个" code="66" />
+        <toggle_state state_id="@string/toggle_enter_done" label="完成" code="66" />
+        <toggle_state state_id="@string/toggle_smiley_off" code="-6" key_type="2" repeat="true" icon="@drawable/smiley_icon" icon_popup="@drawable/smiley_popup_icon" />
+        <toggle_state state_id="@string/toggle_smiley_on" code="-6" key_type="3" repeat="true" icon="@drawable/smiley_icon" icon_popup="@drawable/smiley_popup_icon" />
+    </key>
+    <key id="2" start_pos_x="75%p" start_pos_y="75%p" width="25%p" height="25%p" code="66" key_type="1" balloon="false">
+        <toggle_state state_id="@string/toggle_enter_go" label="去往" code="66" />
+        <toggle_state state_id="@string/toggle_enter_search" code="66" icon="@drawable/search_icon" icon_popup="@drawable/search_popup_icon" />
+        <toggle_state state_id="@string/toggle_enter_send" label="发送" code="66" />
+        <toggle_state state_id="@string/toggle_enter_next" label="下个" code="66" />
+        <toggle_state state_id="@string/toggle_enter_done" label="完成" code="66" />
+    </key>
+    <key id="3" start_pos_x="85.715%p" start_pos_y="50%p" width="14.286%p" height="25%p" code="67" key_type="1" repeat="true" />
+    <key id="4" code="-3" start_pos_x="0%p" start_pos_y="75%p" width="20%p" height="25%p" key_type="1" label="\@123" repeat="true">
+        <toggle_state key_type="1" state_id="@string/toggle_cn_cand" label="\'" icon="@drawable/splitter_icon" icon_popup="@drawable/splitter_popup_icon" />
+    </key>
+    <key id="5" code="-3" start_pos_x="0%p" start_pos_y="75%p" width="20%p" height="25%p" key_type="1" label="拼" repeat="true">
+        <toggle_state state_id="@string/toggle_en_sym1" label="abc" code="-3" />
+        <toggle_state state_id="@string/toggle_en_sym2" label="abc" code="-3" />
+    </key>
+    <key id="7" start_pos_x="65.304%p" start_pos_y="75%p" width="14.696%p" height="25%p" label="." key_type="0" icon="@drawable/period_icon" icon_popup="@drawable/period_popup_icon" />
+    <key id="8" start_pos_x="20%p" start_pos_y="75%p" width="14.696%p" height="25%p" label="," key_type="0">
+        <toggle_state state_id="@string/toggle_en_lower" code="-1" icon="@drawable/shift_off_icon" icon_popup="@drawable/shift_off_popup_icon" key_type="2" />
+        <toggle_state state_id="@string/toggle_en_upper" code="-1" icon="@drawable/shift_on_icon" icon_popup="@drawable/shift_on_popup_icon" key_type="3" />
+    </key>
+    <key id="10" start_pos_x="0%p" start_pos_y="50%p" width="14.286%p" height="25%p" label="笔" code="-11" icon="@drawable/more_layout" icon_popup="@drawable/more_layout_popup">
+        <toggle_state state_id="@string/toggle_en_lower" code="-1" icon="@drawable/shift_off_icon" icon_popup="@drawable/shift_off_popup_icon" key_type="2" />
+        <toggle_state state_id="@string/toggle_en_upper" code="-1" icon="@drawable/shift_on_icon" icon_popup="@drawable/shift_on_popup_icon" key_type="2" />
+        <toggle_state state_id="@string/toggle_en_upper_locked" code="-1" icon="@drawable/shift_on_icon" icon_popup="@drawable/shift_on_popup_icon" key_type="3" />
+        <toggle_state key_type="1" state_id="@string/toggle_cn_cand" label="\'" icon="@drawable/splitter_icon" icon_popup="@drawable/splitter_popup_icon" />
+        <toggle_state key_type="1" state_id="@string/toggle_stroke_disabled" label="\'" icon="@drawable/splitter_icon" icon_popup="@drawable/splitter_popup_icon" />
+    </key>
+    <key id="14" start_pos_x="71.428%p" start_pos_y="75%p" width="14.491%p" height="25%p" code="66" key_type="1">
+        <toggle_state state_id="@string/toggle_enter_go" label="去往" code="66" />
+        <toggle_state state_id="@string/toggle_enter_search" code="66" icon="@drawable/search_icon" icon_popup="@drawable/search_popup_icon" />
+        <toggle_state state_id="@string/toggle_enter_send" label="发送" code="66" />
+        <toggle_state state_id="@string/toggle_enter_next" label="下个" code="66" />
+        <toggle_state state_id="@string/toggle_enter_done" label="完成" code="66" />
+    </key>
+    <key id="15" code="-3" start_pos_x="0%p" start_pos_y="75%p" width="14.286%p" height="25%p" key_type="1" label="\?123" repeat="true" />
+    <key id="16" code="-3" start_pos_x="0%p" start_pos_y="75%p" width="14.286%p" height="25%p" key_type="1" label="拼音" repeat="true">
+        <toggle_state state_id="@string/toggle_exit_sym_to_en" label="abc" code="-3" />
+    </key>
+    <key id="17" start_pos_x="14.286%p" start_pos_y="75%p" width="20.410%p" height="25%p" repeat="true" code="-2" key_type="1" label="en" icon="@drawable/lang_switch_en" icon_popup="@drawable/lang_switch_popup_icon">
+        <toggle_state state_id="@string/toggle_en_lower" code="-2" label="拼" icon="@drawable/lang_switch_pinyin" icon_popup="@drawable/lang_switch_popup_icon" />
+        <toggle_state state_id="@string/toggle_en_upper" code="-2" label="拼" icon="@drawable/lang_switch_pinyin" icon_popup="@drawable/lang_switch_popup_icon" />
+        <toggle_state state_id="@string/toggle_en_upper_locked" code="-2" label="拼" icon="@drawable/lang_switch_pinyin" icon_popup="@drawable/lang_switch_popup_icon" />
+    </key>
+    <key id="18" start_pos_x="14.286%p" start_pos_y="75%p" width="14.286%p" height="25%p" repeat="true" code="-2" key_type="1" label="ABC" icon="@drawable/pin" icon_popup="@drawable/lang_switch_popup_icon">
+        <toggle_state state_id="@string/toggle_en_lower" code="-2" label="拼音" icon="@drawable/abc" icon_popup="@drawable/lang_switch_popup_icon" />
+        <toggle_state state_id="@string/toggle_en_upper" code="-2" label="拼音" icon="@drawable/abc" icon_popup="@drawable/lang_switch_popup_icon" />
+        <toggle_state state_id="@string/toggle_en_upper_locked" code="-2" label="拼音" icon="@drawable/abc" icon_popup="@drawable/lang_switch_popup_icon" />
+    </key>
+    <key id="19" start_pos_x="71.428%p" start_pos_y="75%p" width="14.286%p" height="25%p" code="66" key_type="1">
+        <toggle_state state_id="@string/toggle_enter_go" label="去往" code="66" />
+        <toggle_state state_id="@string/toggle_enter_search" code="66" icon="@drawable/search_icon" icon_popup="@drawable/search_popup_icon" />
+        <toggle_state state_id="@string/toggle_enter_send" label="发送" code="66" />
+        <toggle_state state_id="@string/toggle_enter_next" label="下个" code="66" />
+        <toggle_state state_id="@string/toggle_enter_done" label="完成" code="66" />
+        <toggle_state state_id="@string/toggle_smiley_off" code="-6" key_type="2" repeat="true" icon="@drawable/smiley_icon" icon_popup="@drawable/smiley_popup_icon" />
+        <toggle_state state_id="@string/toggle_smiley_on" code="-6" key_type="3" repeat="true" icon="@drawable/smiley_icon" icon_popup="@drawable/smiley_popup_icon" />
+    </key>
+    <key id="20" key_type="1" start_pos_x="85.714%p" start_pos_y="75%p" width="14.491%p" height="25%p" label="T9" code="-12" icon="@drawable/t9_switcher_icon" icon_popup="@drawable/t9_switcher_icon_popup" />
+    <key key_type="1" id="21" start_pos_x="0%p" start_pos_y="50%p" width="14.286%p" height="25%p" label="\'" icon="@drawable/splitter_icon" icon_popup="@drawable/splitter_popup_icon">
+        <toggle_state state_id="@string/toggle_en_lower" code="-1" icon="@drawable/shift_off_icon" icon_popup="@drawable/shift_off_popup_icon" key_type="2" />
+        <toggle_state state_id="@string/toggle_en_upper" code="-1" icon="@drawable/shift_on_icon" icon_popup="@drawable/shift_on_popup_icon" key_type="2" />
+        <toggle_state state_id="@string/toggle_en_upper_locked" code="-1" icon="@drawable/shift_on_icon" icon_popup="@drawable/shift_on_popup_icon" key_type="3" />
+        <toggle_state key_type="1" state_id="@string/toggle_cn_cand" label="\'" icon="@drawable/splitter_icon" icon_popup="@drawable/splitter_popup_icon" />
+        <toggle_state key_type="1" state_id="@string/toggle_stroke_disabled" label="\'" icon="@drawable/splitter_icon" icon_popup="@drawable/splitter_popup_icon" />
+    </key>
+    <key id="22" code="62" start_pos_x="38.777%p" start_pos_y="75%p" key_type="5" width="22.446%p" height="25%p" icon="@drawable/space_icon" icon_popup="@drawable/space_popup_icon">
+        <toggle_state state_id="@string/toggle_en_lower" code="62" icon="@drawable/space_icon" icon_popup="@drawable/space_popup_icon" />
+        <toggle_state state_id="@string/toggle_en_upper" code="62" icon="@drawable/space_icon" icon_popup="@drawable/space_popup_icon" />
+        <toggle_state state_id="@string/toggle_en_upper_locked" code="62" icon="@drawable/space_icon" icon_popup="@drawable/space_popup_icon" />
+    </key>
+</skb_template>

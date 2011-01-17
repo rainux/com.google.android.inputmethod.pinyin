@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.google.android.inputmethod.pinyin.CandidatesContainer android:orientation="horizontal" android:id="@id/candidates_container" android:background="@drawable/cands_container_bg" android:layout_width="fill_parent" android:layout_height="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:id="@id/arrow_left_btn" android:background="@drawable/arrow_bg" android:clickable="true" android:layout_width="30.0dip" android:layout_height="fill_parent" android:src="@drawable/arrow_left" android:layout_weight="0.0" />
+    <ViewFlipper android:id="@id/candidate_flipper" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <view android:id="@id/candidate_view1" android:layout_width="fill_parent" android:layout_height="fill_parent" class="com.google.android.inputmethod.pinyin.CandidateView" />
+        <view android:id="@id/candidate_view2" android:layout_width="fill_parent" android:layout_height="fill_parent" class="com.google.android.inputmethod.pinyin.CandidateView" />
+    </ViewFlipper>
+    <ImageButton android:id="@id/arrow_right_btn" android:background="@drawable/arrow_bg" android:clickable="true" android:layout_width="30.0dip" android:layout_height="fill_parent" android:src="@drawable/arrow_right" android:layout_weight="0.0" />
+</com.google.android.inputmethod.pinyin.CandidatesContainer>

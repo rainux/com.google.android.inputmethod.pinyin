@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/floating_container" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.inputmethod.pinyin.ComposingView android:id="@id/composing_view" android:background="@drawable/composing_area_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

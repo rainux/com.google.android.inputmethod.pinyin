@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen android:title="@string/setting"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference android:persistent="true" android:title="@string/setting_fault_tolerance_title" android:key="@string/setting_fault_tolerance_key" android:summaryOn="@string/setting_enabled_title" android:summaryOff="@string/setting_disabled_title" />
+    <CheckBoxPreference android:persistent="true" android:title="@string/setting_sound_key_title" android:key="@string/setting_sound_key" android:summaryOn="@string/setting_enabled" android:summaryOff="@string/setting_disabled" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/setting_vibrate_title" android:key="@string/setting_vibrate_key" android:summaryOn="@string/setting_enabled" android:summaryOff="@string/setting_disabled" />
+    <CheckBoxPreference android:persistent="true" android:title="@string/setting_prediction_chinese_title" android:key="@string/setting_prediction_chinese_key" android:summaryOn="@string/setting_enabled" android:summaryOff="@string/setting_disabled" />
+    <CheckBoxPreference android:persistent="true" android:title="@string/setting_prediction_english_title" android:key="@string/setting_prediction_english_key" android:summaryOn="@string/setting_enabled" android:summaryOff="@string/setting_disabled" />
+    <CheckBoxPreference android:persistent="true" android:title="@string/setting_spell_correction_title" android:key="@string/setting_spell_correction_key" android:dependency="@string/setting_prediction_english_key" android:summaryOn="@string/setting_enabled" android:summaryOff="@string/setting_disabled" />
+    <CheckBoxPreference android:persistent="true" android:title="@string/setting_auto_capitalization_title" android:key="@string/setting_auto_capitalization_key" android:summaryOn="@string/setting_enabled" android:summaryOff="@string/setting_disabled" />
+    <CheckBoxPreference android:persistent="true" android:title="@string/setting_tradition_title" android:key="@string/setting_tradition_key" android:summaryOn="@string/setting_enabled" android:summaryOff="@string/setting_disabled" />
+    <PreferenceScreen android:title="@string/setting_others" android:key="@string/setting_advanced_key" android:summary="@string/setting_others_summary">
+        <intent android:action="com.google.android.inputmethod.pinyin.ADV_SETTINGS" />
+    </PreferenceScreen>
+    <Preference android:persistent="false" android:title="@string/setting_switch_title" android:key="@string/setting_switch_key" android:summary="@string/setting_switch_shift_space_title" style="?android:preferenceInformationStyle" />
+    <Preference android:persistent="false" android:title="@string/setting_tos_title" android:key="@string/setting_tos_key" />
+    <Preference android:persistent="false" android:title="@string/setting_privacy_title" android:key="@string/setting_privacy_key" />
+    <Preference android:persistent="false" android:title="@string/setting_about_title" android:key="@string/setting_about_key" android:summary="@string/setting_about_version_title" style="?android:preferenceInformationStyle" />
+</PreferenceScreen>

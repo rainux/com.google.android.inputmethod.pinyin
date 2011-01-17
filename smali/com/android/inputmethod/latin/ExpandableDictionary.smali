@@ -1,0 +1,2422 @@
+.class public Lcom/android/inputmethod/latin/ExpandableDictionary;
+.super Lcom/android/inputmethod/latin/Dictionary;
+.source "ExpandableDictionary.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;,
+        Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    }
+.end annotation
+
+
+# static fields
+.field static final BASE_CHARS:[C = null
+
+.field public static final MAX_WORD_LENGTH:I = 0x20
+
+.field private static final QUOTE:C = '\''
+
+
+# instance fields
+.field private mCodes:[[I
+
+.field private mContext:Landroid/content/Context;
+
+.field private mInputLength:I
+
+.field private mMaxDepth:I
+
+.field private mNextLettersFrequencies:[I
+
+.field private mRoots:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+.field private mWordBuilder:[C
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 1
+
+    .prologue
+    .line 298
+    const/16 v0, 0x500
+
+    new-array v0, v0, [C
+
+    fill-array-data v0, :array_a
+
+    sput-object v0, Lcom/android/inputmethod/latin/ExpandableDictionary;->BASE_CHARS:[C
+
+    return-void
+
+    :array_a
+    .array-data 0x2
+        0x0t 0x0t
+        0x1t 0x0t
+        0x2t 0x0t
+        0x3t 0x0t
+        0x4t 0x0t
+        0x5t 0x0t
+        0x6t 0x0t
+        0x7t 0x0t
+        0x8t 0x0t
+        0x9t 0x0t
+        0xat 0x0t
+        0xbt 0x0t
+        0xct 0x0t
+        0xdt 0x0t
+        0xet 0x0t
+        0xft 0x0t
+        0x10t 0x0t
+        0x11t 0x0t
+        0x12t 0x0t
+        0x13t 0x0t
+        0x14t 0x0t
+        0x15t 0x0t
+        0x16t 0x0t
+        0x17t 0x0t
+        0x18t 0x0t
+        0x19t 0x0t
+        0x1at 0x0t
+        0x1bt 0x0t
+        0x1ct 0x0t
+        0x1dt 0x0t
+        0x1et 0x0t
+        0x1ft 0x0t
+        0x20t 0x0t
+        0x21t 0x0t
+        0x22t 0x0t
+        0x23t 0x0t
+        0x24t 0x0t
+        0x25t 0x0t
+        0x26t 0x0t
+        0x27t 0x0t
+        0x28t 0x0t
+        0x29t 0x0t
+        0x2at 0x0t
+        0x2bt 0x0t
+        0x2ct 0x0t
+        0x2dt 0x0t
+        0x2et 0x0t
+        0x2ft 0x0t
+        0x30t 0x0t
+        0x31t 0x0t
+        0x32t 0x0t
+        0x33t 0x0t
+        0x34t 0x0t
+        0x35t 0x0t
+        0x36t 0x0t
+        0x37t 0x0t
+        0x38t 0x0t
+        0x39t 0x0t
+        0x3at 0x0t
+        0x3bt 0x0t
+        0x3ct 0x0t
+        0x3dt 0x0t
+        0x3et 0x0t
+        0x3ft 0x0t
+        0x40t 0x0t
+        0x41t 0x0t
+        0x42t 0x0t
+        0x43t 0x0t
+        0x44t 0x0t
+        0x45t 0x0t
+        0x46t 0x0t
+        0x47t 0x0t
+        0x48t 0x0t
+        0x49t 0x0t
+        0x4at 0x0t
+        0x4bt 0x0t
+        0x4ct 0x0t
+        0x4dt 0x0t
+        0x4et 0x0t
+        0x4ft 0x0t
+        0x50t 0x0t
+        0x51t 0x0t
+        0x52t 0x0t
+        0x53t 0x0t
+        0x54t 0x0t
+        0x55t 0x0t
+        0x56t 0x0t
+        0x57t 0x0t
+        0x58t 0x0t
+        0x59t 0x0t
+        0x5at 0x0t
+        0x5bt 0x0t
+        0x5ct 0x0t
+        0x5dt 0x0t
+        0x5et 0x0t
+        0x5ft 0x0t
+        0x60t 0x0t
+        0x61t 0x0t
+        0x62t 0x0t
+        0x63t 0x0t
+        0x64t 0x0t
+        0x65t 0x0t
+        0x66t 0x0t
+        0x67t 0x0t
+        0x68t 0x0t
+        0x69t 0x0t
+        0x6at 0x0t
+        0x6bt 0x0t
+        0x6ct 0x0t
+        0x6dt 0x0t
+        0x6et 0x0t
+        0x6ft 0x0t
+        0x70t 0x0t
+        0x71t 0x0t
+        0x72t 0x0t
+        0x73t 0x0t
+        0x74t 0x0t
+        0x75t 0x0t
+        0x76t 0x0t
+        0x77t 0x0t
+        0x78t 0x0t
+        0x79t 0x0t
+        0x7at 0x0t
+        0x7bt 0x0t
+        0x7ct 0x0t
+        0x7dt 0x0t
+        0x7et 0x0t
+        0x7ft 0x0t
+        0x80t 0x0t
+        0x81t 0x0t
+        0x82t 0x0t
+        0x83t 0x0t
+        0x84t 0x0t
+        0x85t 0x0t
+        0x86t 0x0t
+        0x87t 0x0t
+        0x88t 0x0t
+        0x89t 0x0t
+        0x8at 0x0t
+        0x8bt 0x0t
+        0x8ct 0x0t
+        0x8dt 0x0t
+        0x8et 0x0t
+        0x8ft 0x0t
+        0x90t 0x0t
+        0x91t 0x0t
+        0x92t 0x0t
+        0x93t 0x0t
+        0x94t 0x0t
+        0x95t 0x0t
+        0x96t 0x0t
+        0x97t 0x0t
+        0x98t 0x0t
+        0x99t 0x0t
+        0x9at 0x0t
+        0x9bt 0x0t
+        0x9ct 0x0t
+        0x9dt 0x0t
+        0x9et 0x0t
+        0x9ft 0x0t
+        0x20t 0x0t
+        0xa1t 0x0t
+        0xa2t 0x0t
+        0xa3t 0x0t
+        0xa4t 0x0t
+        0xa5t 0x0t
+        0xa6t 0x0t
+        0xa7t 0x0t
+        0x20t 0x0t
+        0xa9t 0x0t
+        0x61t 0x0t
+        0xabt 0x0t
+        0xact 0x0t
+        0xadt 0x0t
+        0xaet 0x0t
+        0x20t 0x0t
+        0xb0t 0x0t
+        0xb1t 0x0t
+        0x32t 0x0t
+        0x33t 0x0t
+        0x20t 0x0t
+        0xbct 0x3t
+        0xb6t 0x0t
+        0xb7t 0x0t
+        0x20t 0x0t
+        0x31t 0x0t
+        0x6ft 0x0t
+        0xbbt 0x0t
+        0x31t 0x0t
+        0x31t 0x0t
+        0x33t 0x0t
+        0xbft 0x0t
+        0x41t 0x0t
+        0x41t 0x0t
+        0x41t 0x0t
+        0x41t 0x0t
+        0x41t 0x0t
+        0x41t 0x0t
+        0xc6t 0x0t
+        0x43t 0x0t
+        0x45t 0x0t
+        0x45t 0x0t
+        0x45t 0x0t
+        0x45t 0x0t
+        0x49t 0x0t
+        0x49t 0x0t
+        0x49t 0x0t
+        0x49t 0x0t
+        0xd0t 0x0t
+        0x4et 0x0t
+        0x4ft 0x0t
+        0x4ft 0x0t
+        0x4ft 0x0t
+        0x4ft 0x0t
+        0x4ft 0x0t
+        0xd7t 0x0t
+        0x4ft 0x0t
+        0x55t 0x0t
+        0x55t 0x0t
+        0x55t 0x0t
+        0x55t 0x0t
+        0x59t 0x0t
+        0xdet 0x0t
+        0x73t 0x0t
+        0x61t 0x0t
+        0x61t 0x0t
+        0x61t 0x0t
+        0x61t 0x0t
+        0x61t 0x0t
+        0x61t 0x0t
+        0xe6t 0x0t
+        0x63t 0x0t
+        0x65t 0x0t
+        0x65t 0x0t
+        0x65t 0x0t
+        0x65t 0x0t
+        0x69t 0x0t
+        0x69t 0x0t
+        0x69t 0x0t
+        0x69t 0x0t
+        0xf0t 0x0t
+        0x6et 0x0t
+        0x6ft 0x0t
+        0x6ft 0x0t
+        0x6ft 0x0t
+        0x6ft 0x0t
+        0x6ft 0x0t
+        0xf7t 0x0t
+        0x6ft 0x0t
+        0x75t 0x0t
+        0x75t 0x0t
+        0x75t 0x0t
+        0x75t 0x0t
+        0x79t 0x0t
+        0xfet 0x0t
+        0x79t 0x0t
+        0x41t 0x0t
+        0x61t 0x0t
+        0x41t 0x0t
+        0x61t 0x0t
+        0x41t 0x0t
+        0x61t 0x0t
+        0x43t 0x0t
+        0x63t 0x0t
+        0x43t 0x0t
+        0x63t 0x0t
+        0x43t 0x0t
+        0x63t 0x0t
+        0x43t 0x0t
+        0x63t 0x0t
+        0x44t 0x0t
+        0x64t 0x0t
+        0x10t 0x1t
+        0x11t 0x1t
+        0x45t 0x0t
+        0x65t 0x0t
+        0x45t 0x0t
+        0x65t 0x0t
+        0x45t 0x0t
+        0x65t 0x0t
+        0x45t 0x0t
+        0x65t 0x0t
+        0x45t 0x0t
+        0x65t 0x0t
+        0x47t 0x0t
+        0x67t 0x0t
+        0x47t 0x0t
+        0x67t 0x0t
+        0x47t 0x0t
+        0x67t 0x0t
+        0x47t 0x0t
+        0x67t 0x0t
+        0x48t 0x0t
+        0x68t 0x0t
+        0x26t 0x1t
+        0x27t 0x1t
+        0x49t 0x0t
+        0x69t 0x0t
+        0x49t 0x0t
+        0x69t 0x0t
+        0x49t 0x0t
+        0x69t 0x0t
+        0x49t 0x0t
+        0x69t 0x0t
+        0x49t 0x0t
+        0x31t 0x1t
+        0x49t 0x0t
+        0x69t 0x0t
+        0x4at 0x0t
+        0x6at 0x0t
+        0x4bt 0x0t
+        0x6bt 0x0t
+        0x38t 0x1t
+        0x4ct 0x0t
+        0x6ct 0x0t
+        0x4ct 0x0t
+        0x6ct 0x0t
+        0x4ct 0x0t
+        0x6ct 0x0t
+        0x4ct 0x0t
+        0x6ct 0x0t
+        0x41t 0x1t
+        0x42t 0x1t
+        0x4et 0x0t
+        0x6et 0x0t
+        0x4et 0x0t
+        0x6et 0x0t
+        0x4et 0x0t
+        0x6et 0x0t
+        0xbct 0x2t
+        0x4at 0x1t
+        0x4bt 0x1t
+        0x4ft 0x0t
+        0x6ft 0x0t
+        0x4ft 0x0t
+        0x6ft 0x0t
+        0x4ft 0x0t
+        0x6ft 0x0t
+        0x52t 0x1t
+        0x53t 0x1t
+        0x52t 0x0t
+        0x72t 0x0t
+        0x52t 0x0t
+        0x72t 0x0t
+        0x52t 0x0t
+        0x72t 0x0t
+        0x53t 0x0t
+        0x73t 0x0t
+        0x53t 0x0t
+        0x73t 0x0t
+        0x53t 0x0t
+        0x73t 0x0t
+        0x53t 0x0t
+        0x73t 0x0t
+        0x54t 0x0t
+        0x74t 0x0t
+        0x54t 0x0t
+        0x74t 0x0t
+        0x66t 0x1t
+        0x67t 0x1t
+        0x55t 0x0t
+        0x75t 0x0t
+        0x55t 0x0t
+        0x75t 0x0t
+        0x55t 0x0t
+        0x75t 0x0t
+        0x55t 0x0t
+        0x75t 0x0t
+        0x55t 0x0t
+        0x75t 0x0t
+        0x55t 0x0t
+        0x75t 0x0t
+        0x57t 0x0t
+        0x77t 0x0t
+        0x59t 0x0t
+        0x79t 0x0t
+        0x59t 0x0t
+        0x5at 0x0t
+        0x7at 0x0t
+        0x5at 0x0t
+        0x7at 0x0t
+        0x5at 0x0t
+        0x7at 0x0t
+        0x73t 0x0t
+        0x80t 0x1t
+        0x81t 0x1t
+        0x82t 0x1t
+        0x83t 0x1t
+        0x84t 0x1t
+        0x85t 0x1t
+        0x86t 0x1t
+        0x87t 0x1t
+        0x88t 0x1t
+        0x89t 0x1t
+        0x8at 0x1t
+        0x8bt 0x1t
+        0x8ct 0x1t
+        0x8dt 0x1t
+        0x8et 0x1t
+        0x8ft 0x1t
+        0x90t 0x1t
+        0x91t 0x1t
+        0x92t 0x1t
+        0x93t 0x1t
+        0x94t 0x1t
+        0x95t 0x1t
+        0x96t 0x1t
+        0x97t 0x1t
+        0x98t 0x1t
+        0x99t 0x1t
+        0x9at 0x1t
+        0x9bt 0x1t
+        0x9ct 0x1t
+        0x9dt 0x1t
+        0x9et 0x1t
+        0x9ft 0x1t
+        0x4ft 0x0t
+        0x6ft 0x0t
+        0xa2t 0x1t
+        0xa3t 0x1t
+        0xa4t 0x1t
+        0xa5t 0x1t
+        0xa6t 0x1t
+        0xa7t 0x1t
+        0xa8t 0x1t
+        0xa9t 0x1t
+        0xaat 0x1t
+        0xabt 0x1t
+        0xact 0x1t
+        0xadt 0x1t
+        0xaet 0x1t
+        0x55t 0x0t
+        0x75t 0x0t
+        0xb1t 0x1t
+        0xb2t 0x1t
+        0xb3t 0x1t
+        0xb4t 0x1t
+        0xb5t 0x1t
+        0xb6t 0x1t
+        0xb7t 0x1t
+        0xb8t 0x1t
+        0xb9t 0x1t
+        0xbat 0x1t
+        0xbbt 0x1t
+        0xbct 0x1t
+        0xbdt 0x1t
+        0xbet 0x1t
+        0xbft 0x1t
+        0xc0t 0x1t
+        0xc1t 0x1t
+        0xc2t 0x1t
+        0xc3t 0x1t
+        0x44t 0x0t
+        0x44t 0x0t
+        0x64t 0x0t
+        0x4ct 0x0t
+        0x4ct 0x0t
+        0x6ct 0x0t
+        0x4et 0x0t
+        0x4et 0x0t
+        0x6et 0x0t
+        0x41t 0x0t
+        0x61t 0x0t
+        0x49t 0x0t
+        0x69t 0x0t
+        0x4ft 0x0t
+        0x6ft 0x0t
+        0x55t 0x0t
+        0x75t 0x0t
+        0xdct 0x0t
+        0xfct 0x0t
+        0xdct 0x0t
+        0xfct 0x0t
+        0xdct 0x0t
+        0xfct 0x0t
+        0xdct 0x0t
+        0xfct 0x0t
+        0xddt 0x1t
+        0xc4t 0x0t
+        0xe4t 0x0t
+        0x26t 0x2t
+        0x27t 0x2t
+        0xc6t 0x0t
+        0xe6t 0x0t
+        0xe4t 0x1t
+        0xe5t 0x1t
+        0x47t 0x0t
+        0x67t 0x0t
+        0x4bt 0x0t
+        0x6bt 0x0t
+        0x4ft 0x0t
+        0x6ft 0x0t
+        0xeat 0x1t
+        0xebt 0x1t
+        0xb7t 0x1t
+        0x92t 0x2t
+        0x6at 0x0t
+        0x44t 0x0t
+        0x44t 0x0t
+        0x64t 0x0t
+        0x47t 0x0t
+        0x67t 0x0t
+        0xf6t 0x1t
+        0xf7t 0x1t
+        0x4et 0x0t
+        0x6et 0x0t
+        0xc5t 0x0t
+        0xe5t 0x0t
+        0xc6t 0x0t
+        0xe6t 0x0t
+        0xd8t 0x0t
+        0xf8t 0x0t
+        0x41t 0x0t
+        0x61t 0x0t
+        0x41t 0x0t
+        0x61t 0x0t
+        0x45t 0x0t
+        0x65t 0x0t
+        0x45t 0x0t
+        0x65t 0x0t
+        0x49t 0x0t
+        0x69t 0x0t
+        0x49t 0x0t
+        0x69t 0x0t
+        0x4ft 0x0t
+        0x6ft 0x0t
+        0x4ft 0x0t
+        0x6ft 0x0t
+        0x52t 0x0t
+        0x72t 0x0t
+        0x52t 0x0t
+        0x72t 0x0t
+        0x55t 0x0t
+        0x75t 0x0t
+        0x55t 0x0t
+        0x75t 0x0t
+        0x53t 0x0t
+        0x73t 0x0t
+        0x54t 0x0t
+        0x74t 0x0t
+        0x1ct 0x2t
+        0x1dt 0x2t
+        0x48t 0x0t
+        0x68t 0x0t
+        0x20t 0x2t
+        0x21t 0x2t
+        0x22t 0x2t
+        0x23t 0x2t
+        0x24t 0x2t
+        0x25t 0x2t
+        0x41t 0x0t
+        0x61t 0x0t
+        0x45t 0x0t
+        0x65t 0x0t
+        0xd6t 0x0t
+        0xf6t 0x0t
+        0xd5t 0x0t
+        0xf5t 0x0t
+        0x4ft 0x0t
+        0x6ft 0x0t
+        0x2et 0x2t
+        0x2ft 0x2t
+        0x59t 0x0t
+        0x79t 0x0t
+        0x34t 0x2t
+        0x35t 0x2t
+        0x36t 0x2t
+        0x37t 0x2t
+        0x38t 0x2t
+        0x39t 0x2t
+        0x3at 0x2t
+        0x3bt 0x2t
+        0x3ct 0x2t
+        0x3dt 0x2t
+        0x3et 0x2t
+        0x3ft 0x2t
+        0x40t 0x2t
+        0x41t 0x2t
+        0x42t 0x2t
+        0x43t 0x2t
+        0x44t 0x2t
+        0x45t 0x2t
+        0x46t 0x2t
+        0x47t 0x2t
+        0x48t 0x2t
+        0x49t 0x2t
+        0x4at 0x2t
+        0x4bt 0x2t
+        0x4ct 0x2t
+        0x4dt 0x2t
+        0x4et 0x2t
+        0x4ft 0x2t
+        0x50t 0x2t
+        0x51t 0x2t
+        0x52t 0x2t
+        0x53t 0x2t
+        0x54t 0x2t
+        0x55t 0x2t
+        0x56t 0x2t
+        0x57t 0x2t
+        0x58t 0x2t
+        0x59t 0x2t
+        0x5at 0x2t
+        0x5bt 0x2t
+        0x5ct 0x2t
+        0x5dt 0x2t
+        0x5et 0x2t
+        0x5ft 0x2t
+        0x60t 0x2t
+        0x61t 0x2t
+        0x62t 0x2t
+        0x63t 0x2t
+        0x64t 0x2t
+        0x65t 0x2t
+        0x66t 0x2t
+        0x67t 0x2t
+        0x68t 0x2t
+        0x69t 0x2t
+        0x6at 0x2t
+        0x6bt 0x2t
+        0x6ct 0x2t
+        0x6dt 0x2t
+        0x6et 0x2t
+        0x6ft 0x2t
+        0x70t 0x2t
+        0x71t 0x2t
+        0x72t 0x2t
+        0x73t 0x2t
+        0x74t 0x2t
+        0x75t 0x2t
+        0x76t 0x2t
+        0x77t 0x2t
+        0x78t 0x2t
+        0x79t 0x2t
+        0x7at 0x2t
+        0x7bt 0x2t
+        0x7ct 0x2t
+        0x7dt 0x2t
+        0x7et 0x2t
+        0x7ft 0x2t
+        0x80t 0x2t
+        0x81t 0x2t
+        0x82t 0x2t
+        0x83t 0x2t
+        0x84t 0x2t
+        0x85t 0x2t
+        0x86t 0x2t
+        0x87t 0x2t
+        0x88t 0x2t
+        0x89t 0x2t
+        0x8at 0x2t
+        0x8bt 0x2t
+        0x8ct 0x2t
+        0x8dt 0x2t
+        0x8et 0x2t
+        0x8ft 0x2t
+        0x90t 0x2t
+        0x91t 0x2t
+        0x92t 0x2t
+        0x93t 0x2t
+        0x94t 0x2t
+        0x95t 0x2t
+        0x96t 0x2t
+        0x97t 0x2t
+        0x98t 0x2t
+        0x99t 0x2t
+        0x9at 0x2t
+        0x9bt 0x2t
+        0x9ct 0x2t
+        0x9dt 0x2t
+        0x9et 0x2t
+        0x9ft 0x2t
+        0xa0t 0x2t
+        0xa1t 0x2t
+        0xa2t 0x2t
+        0xa3t 0x2t
+        0xa4t 0x2t
+        0xa5t 0x2t
+        0xa6t 0x2t
+        0xa7t 0x2t
+        0xa8t 0x2t
+        0xa9t 0x2t
+        0xaat 0x2t
+        0xabt 0x2t
+        0xact 0x2t
+        0xadt 0x2t
+        0xaet 0x2t
+        0xaft 0x2t
+        0x68t 0x0t
+        0x66t 0x2t
+        0x6at 0x0t
+        0x72t 0x0t
+        0x79t 0x2t
+        0x7bt 0x2t
+        0x81t 0x2t
+        0x77t 0x0t
+        0x79t 0x0t
+        0xb9t 0x2t
+        0xbat 0x2t
+        0xbbt 0x2t
+        0xbct 0x2t
+        0xbdt 0x2t
+        0xbet 0x2t
+        0xbft 0x2t
+        0xc0t 0x2t
+        0xc1t 0x2t
+        0xc2t 0x2t
+        0xc3t 0x2t
+        0xc4t 0x2t
+        0xc5t 0x2t
+        0xc6t 0x2t
+        0xc7t 0x2t
+        0xc8t 0x2t
+        0xc9t 0x2t
+        0xcat 0x2t
+        0xcbt 0x2t
+        0xcct 0x2t
+        0xcdt 0x2t
+        0xcet 0x2t
+        0xcft 0x2t
+        0xd0t 0x2t
+        0xd1t 0x2t
+        0xd2t 0x2t
+        0xd3t 0x2t
+        0xd4t 0x2t
+        0xd5t 0x2t
+        0xd6t 0x2t
+        0xd7t 0x2t
+        0x20t 0x0t
+        0x20t 0x0t
+        0x20t 0x0t
+        0x20t 0x0t
+        0x20t 0x0t
+        0x20t 0x0t
+        0xdet 0x2t
+        0xdft 0x2t
+        0x63t 0x2t
+        0x6ct 0x0t
+        0x73t 0x0t
+        0x78t 0x0t
+        0x95t 0x2t
+        0xe5t 0x2t
+        0xe6t 0x2t
+        0xe7t 0x2t
+        0xe8t 0x2t
+        0xe9t 0x2t
+        0xeat 0x2t
+        0xebt 0x2t
+        0xect 0x2t
+        0xedt 0x2t
+        0xeet 0x2t
+        0xeft 0x2t
+        0xf0t 0x2t
+        0xf1t 0x2t
+        0xf2t 0x2t
+        0xf3t 0x2t
+        0xf4t 0x2t
+        0xf5t 0x2t
+        0xf6t 0x2t
+        0xf7t 0x2t
+        0xf8t 0x2t
+        0xf9t 0x2t
+        0xfat 0x2t
+        0xfbt 0x2t
+        0xfct 0x2t
+        0xfdt 0x2t
+        0xfet 0x2t
+        0xfft 0x2t
+        0x0t 0x3t
+        0x1t 0x3t
+        0x2t 0x3t
+        0x3t 0x3t
+        0x4t 0x3t
+        0x5t 0x3t
+        0x6t 0x3t
+        0x7t 0x3t
+        0x8t 0x3t
+        0x9t 0x3t
+        0xat 0x3t
+        0xbt 0x3t
+        0xct 0x3t
+        0xdt 0x3t
+        0xet 0x3t
+        0xft 0x3t
+        0x10t 0x3t
+        0x11t 0x3t
+        0x12t 0x3t
+        0x13t 0x3t
+        0x14t 0x3t
+        0x15t 0x3t
+        0x16t 0x3t
+        0x17t 0x3t
+        0x18t 0x3t
+        0x19t 0x3t
+        0x1at 0x3t
+        0x1bt 0x3t
+        0x1ct 0x3t
+        0x1dt 0x3t
+        0x1et 0x3t
+        0x1ft 0x3t
+        0x20t 0x3t
+        0x21t 0x3t
+        0x22t 0x3t
+        0x23t 0x3t
+        0x24t 0x3t
+        0x25t 0x3t
+        0x26t 0x3t
+        0x27t 0x3t
+        0x28t 0x3t
+        0x29t 0x3t
+        0x2at 0x3t
+        0x2bt 0x3t
+        0x2ct 0x3t
+        0x2dt 0x3t
+        0x2et 0x3t
+        0x2ft 0x3t
+        0x30t 0x3t
+        0x31t 0x3t
+        0x32t 0x3t
+        0x33t 0x3t
+        0x34t 0x3t
+        0x35t 0x3t
+        0x36t 0x3t
+        0x37t 0x3t
+        0x38t 0x3t
+        0x39t 0x3t
+        0x3at 0x3t
+        0x3bt 0x3t
+        0x3ct 0x3t
+        0x3dt 0x3t
+        0x3et 0x3t
+        0x3ft 0x3t
+        0x0t 0x3t
+        0x1t 0x3t
+        0x42t 0x3t
+        0x13t 0x3t
+        0x8t 0x3t
+        0x45t 0x3t
+        0x46t 0x3t
+        0x47t 0x3t
+        0x48t 0x3t
+        0x49t 0x3t
+        0x4at 0x3t
+        0x4bt 0x3t
+        0x4ct 0x3t
+        0x4dt 0x3t
+        0x4et 0x3t
+        0x4ft 0x3t
+        0x50t 0x3t
+        0x51t 0x3t
+        0x52t 0x3t
+        0x53t 0x3t
+        0x54t 0x3t
+        0x55t 0x3t
+        0x56t 0x3t
+        0x57t 0x3t
+        0x58t 0x3t
+        0x59t 0x3t
+        0x5at 0x3t
+        0x5bt 0x3t
+        0x5ct 0x3t
+        0x5dt 0x3t
+        0x5et 0x3t
+        0x5ft 0x3t
+        0x60t 0x3t
+        0x61t 0x3t
+        0x62t 0x3t
+        0x63t 0x3t
+        0x64t 0x3t
+        0x65t 0x3t
+        0x66t 0x3t
+        0x67t 0x3t
+        0x68t 0x3t
+        0x69t 0x3t
+        0x6at 0x3t
+        0x6bt 0x3t
+        0x6ct 0x3t
+        0x6dt 0x3t
+        0x6et 0x3t
+        0x6ft 0x3t
+        0x70t 0x3t
+        0x71t 0x3t
+        0x72t 0x3t
+        0x73t 0x3t
+        0xb9t 0x2t
+        0x75t 0x3t
+        0x76t 0x3t
+        0x77t 0x3t
+        0x78t 0x3t
+        0x79t 0x3t
+        0x20t 0x0t
+        0x7bt 0x3t
+        0x7ct 0x3t
+        0x7dt 0x3t
+        0x3bt 0x0t
+        0x7ft 0x3t
+        0x80t 0x3t
+        0x81t 0x3t
+        0x82t 0x3t
+        0x83t 0x3t
+        0x20t 0x0t
+        0xa8t 0x0t
+        0x91t 0x3t
+        0xb7t 0x0t
+        0x95t 0x3t
+        0x97t 0x3t
+        0x99t 0x3t
+        0x8bt 0x3t
+        0x9ft 0x3t
+        0x8dt 0x3t
+        0xa5t 0x3t
+        0xa9t 0x3t
+        0xcat 0x3t
+        0x91t 0x3t
+        0x92t 0x3t
+        0x93t 0x3t
+        0x94t 0x3t
+        0x95t 0x3t
+        0x96t 0x3t
+        0x97t 0x3t
+        0x98t 0x3t
+        0x99t 0x3t
+        0x9at 0x3t
+        0x9bt 0x3t
+        0x9ct 0x3t
+        0x9dt 0x3t
+        0x9et 0x3t
+        0x9ft 0x3t
+        0xa0t 0x3t
+        0xa1t 0x3t
+        0xa2t 0x3t
+        0xa3t 0x3t
+        0xa4t 0x3t
+        0xa5t 0x3t
+        0xa6t 0x3t
+        0xa7t 0x3t
+        0xa8t 0x3t
+        0xa9t 0x3t
+        0x99t 0x3t
+        0xa5t 0x3t
+        0xb1t 0x3t
+        0xb5t 0x3t
+        0xb7t 0x3t
+        0xb9t 0x3t
+        0xcbt 0x3t
+        0xb1t 0x3t
+        0xb2t 0x3t
+        0xb3t 0x3t
+        0xb4t 0x3t
+        0xb5t 0x3t
+        0xb6t 0x3t
+        0xb7t 0x3t
+        0xb8t 0x3t
+        0xb9t 0x3t
+        0xbat 0x3t
+        0xbbt 0x3t
+        0xbct 0x3t
+        0xbdt 0x3t
+        0xbet 0x3t
+        0xbft 0x3t
+        0xc0t 0x3t
+        0xc1t 0x3t
+        0xc2t 0x3t
+        0xc3t 0x3t
+        0xc4t 0x3t
+        0xc5t 0x3t
+        0xc6t 0x3t
+        0xc7t 0x3t
+        0xc8t 0x3t
+        0xc9t 0x3t
+        0xb9t 0x3t
+        0xc5t 0x3t
+        0xbft 0x3t
+        0xc5t 0x3t
+        0xc9t 0x3t
+        0xcft 0x3t
+        0xb2t 0x3t
+        0xb8t 0x3t
+        0xa5t 0x3t
+        0xd2t 0x3t
+        0xd2t 0x3t
+        0xc6t 0x3t
+        0xc0t 0x3t
+        0xd7t 0x3t
+        0xd8t 0x3t
+        0xd9t 0x3t
+        0xdat 0x3t
+        0xdbt 0x3t
+        0xdct 0x3t
+        0xddt 0x3t
+        0xdet 0x3t
+        0xdft 0x3t
+        0xe0t 0x3t
+        0xe1t 0x3t
+        0xe2t 0x3t
+        0xe3t 0x3t
+        0xe4t 0x3t
+        0xe5t 0x3t
+        0xe6t 0x3t
+        0xe7t 0x3t
+        0xe8t 0x3t
+        0xe9t 0x3t
+        0xeat 0x3t
+        0xebt 0x3t
+        0xect 0x3t
+        0xedt 0x3t
+        0xeet 0x3t
+        0xeft 0x3t
+        0xbat 0x3t
+        0xc1t 0x3t
+        0xc2t 0x3t
+        0xf3t 0x3t
+        0x98t 0x3t
+        0xb5t 0x3t
+        0xf6t 0x3t
+        0xf7t 0x3t
+        0xf8t 0x3t
+        0xa3t 0x3t
+        0xfat 0x3t
+        0xfbt 0x3t
+        0xfct 0x3t
+        0xfdt 0x3t
+        0xfet 0x3t
+        0xfft 0x3t
+        0x15t 0x4t
+        0x15t 0x4t
+        0x2t 0x4t
+        0x13t 0x4t
+        0x4t 0x4t
+        0x5t 0x4t
+        0x6t 0x4t
+        0x6t 0x4t
+        0x8t 0x4t
+        0x9t 0x4t
+        0xat 0x4t
+        0xbt 0x4t
+        0x1at 0x4t
+        0x18t 0x4t
+        0x23t 0x4t
+        0xft 0x4t
+        0x10t 0x4t
+        0x11t 0x4t
+        0x12t 0x4t
+        0x13t 0x4t
+        0x14t 0x4t
+        0x15t 0x4t
+        0x16t 0x4t
+        0x17t 0x4t
+        0x18t 0x4t
+        0x18t 0x4t
+        0x1at 0x4t
+        0x1bt 0x4t
+        0x1ct 0x4t
+        0x1dt 0x4t
+        0x1et 0x4t
+        0x1ft 0x4t
+        0x20t 0x4t
+        0x21t 0x4t
+        0x22t 0x4t
+        0x23t 0x4t
+        0x24t 0x4t
+        0x25t 0x4t
+        0x26t 0x4t
+        0x27t 0x4t
+        0x28t 0x4t
+        0x29t 0x4t
+        0x2at 0x4t
+        0x2bt 0x4t
+        0x2ct 0x4t
+        0x2dt 0x4t
+        0x2et 0x4t
+        0x2ft 0x4t
+        0x30t 0x4t
+        0x31t 0x4t
+        0x32t 0x4t
+        0x33t 0x4t
+        0x34t 0x4t
+        0x35t 0x4t
+        0x36t 0x4t
+        0x37t 0x4t
+        0x38t 0x4t
+        0x38t 0x4t
+        0x3at 0x4t
+        0x3bt 0x4t
+        0x3ct 0x4t
+        0x3dt 0x4t
+        0x3et 0x4t
+        0x3ft 0x4t
+        0x40t 0x4t
+        0x41t 0x4t
+        0x42t 0x4t
+        0x43t 0x4t
+        0x44t 0x4t
+        0x45t 0x4t
+        0x46t 0x4t
+        0x47t 0x4t
+        0x48t 0x4t
+        0x49t 0x4t
+        0x4at 0x4t
+        0x4bt 0x4t
+        0x4ct 0x4t
+        0x4dt 0x4t
+        0x4et 0x4t
+        0x4ft 0x4t
+        0x35t 0x4t
+        0x35t 0x4t
+        0x52t 0x4t
+        0x33t 0x4t
+        0x54t 0x4t
+        0x55t 0x4t
+        0x56t 0x4t
+        0x56t 0x4t
+        0x58t 0x4t
+        0x59t 0x4t
+        0x5at 0x4t
+        0x5bt 0x4t
+        0x3at 0x4t
+        0x38t 0x4t
+        0x43t 0x4t
+        0x5ft 0x4t
+        0x60t 0x4t
+        0x61t 0x4t
+        0x62t 0x4t
+        0x63t 0x4t
+        0x64t 0x4t
+        0x65t 0x4t
+        0x66t 0x4t
+        0x67t 0x4t
+        0x68t 0x4t
+        0x69t 0x4t
+        0x6at 0x4t
+        0x6bt 0x4t
+        0x6ct 0x4t
+        0x6dt 0x4t
+        0x6et 0x4t
+        0x6ft 0x4t
+        0x70t 0x4t
+        0x71t 0x4t
+        0x72t 0x4t
+        0x73t 0x4t
+        0x74t 0x4t
+        0x75t 0x4t
+        0x74t 0x4t
+        0x75t 0x4t
+        0x78t 0x4t
+        0x79t 0x4t
+        0x7at 0x4t
+        0x7bt 0x4t
+        0x7ct 0x4t
+        0x7dt 0x4t
+        0x7et 0x4t
+        0x7ft 0x4t
+        0x80t 0x4t
+        0x81t 0x4t
+        0x82t 0x4t
+        0x83t 0x4t
+        0x84t 0x4t
+        0x85t 0x4t
+        0x86t 0x4t
+        0x87t 0x4t
+        0x88t 0x4t
+        0x89t 0x4t
+        0x8at 0x4t
+        0x8bt 0x4t
+        0x8ct 0x4t
+        0x8dt 0x4t
+        0x8et 0x4t
+        0x8ft 0x4t
+        0x90t 0x4t
+        0x91t 0x4t
+        0x92t 0x4t
+        0x93t 0x4t
+        0x94t 0x4t
+        0x95t 0x4t
+        0x96t 0x4t
+        0x97t 0x4t
+        0x98t 0x4t
+        0x99t 0x4t
+        0x9at 0x4t
+        0x9bt 0x4t
+        0x9ct 0x4t
+        0x9dt 0x4t
+        0x9et 0x4t
+        0x9ft 0x4t
+        0xa0t 0x4t
+        0xa1t 0x4t
+        0xa2t 0x4t
+        0xa3t 0x4t
+        0xa4t 0x4t
+        0xa5t 0x4t
+        0xa6t 0x4t
+        0xa7t 0x4t
+        0xa8t 0x4t
+        0xa9t 0x4t
+        0xaat 0x4t
+        0xabt 0x4t
+        0xact 0x4t
+        0xadt 0x4t
+        0xaet 0x4t
+        0xaft 0x4t
+        0xb0t 0x4t
+        0xb1t 0x4t
+        0xb2t 0x4t
+        0xb3t 0x4t
+        0xb4t 0x4t
+        0xb5t 0x4t
+        0xb6t 0x4t
+        0xb7t 0x4t
+        0xb8t 0x4t
+        0xb9t 0x4t
+        0xbat 0x4t
+        0xbbt 0x4t
+        0xbct 0x4t
+        0xbdt 0x4t
+        0xbet 0x4t
+        0xbft 0x4t
+        0xc0t 0x4t
+        0x16t 0x4t
+        0x36t 0x4t
+        0xc3t 0x4t
+        0xc4t 0x4t
+        0xc5t 0x4t
+        0xc6t 0x4t
+        0xc7t 0x4t
+        0xc8t 0x4t
+        0xc9t 0x4t
+        0xcat 0x4t
+        0xcbt 0x4t
+        0xcct 0x4t
+        0xcdt 0x4t
+        0xcet 0x4t
+        0xcft 0x4t
+        0x10t 0x4t
+        0x30t 0x4t
+        0x10t 0x4t
+        0x30t 0x4t
+        0xd4t 0x4t
+        0xd5t 0x4t
+        0x15t 0x4t
+        0x35t 0x4t
+        0xd8t 0x4t
+        0xd9t 0x4t
+        0xd8t 0x4t
+        0xd9t 0x4t
+        0x16t 0x4t
+        0x36t 0x4t
+        0x17t 0x4t
+        0x37t 0x4t
+        0xe0t 0x4t
+        0xe1t 0x4t
+        0x18t 0x4t
+        0x38t 0x4t
+        0x18t 0x4t
+        0x38t 0x4t
+        0x1et 0x4t
+        0x3et 0x4t
+        0xe8t 0x4t
+        0xe9t 0x4t
+        0xe8t 0x4t
+        0xe9t 0x4t
+        0x2dt 0x4t
+        0x4dt 0x4t
+        0x23t 0x4t
+        0x43t 0x4t
+        0x23t 0x4t
+        0x43t 0x4t
+        0x23t 0x4t
+        0x43t 0x4t
+        0x27t 0x4t
+        0x47t 0x4t
+        0xf6t 0x4t
+        0xf7t 0x4t
+        0x2bt 0x4t
+        0x4bt 0x4t
+        0xfat 0x4t
+        0xfbt 0x4t
+        0xfct 0x4t
+        0xfdt 0x4t
+        0xfet 0x4t
+        0xfft 0x4t
+    .end array-data
+.end method
+
+.method constructor <init>(Landroid/content/Context;)V
+    .registers 4
+    .parameter "context"
+
+    .prologue
+    const/16 v1, 0x20
+
+    .line 67
+    invoke-direct {p0}, Lcom/android/inputmethod/latin/Dictionary;-><init>()V
+
+    .line 27
+    new-array v0, v1, [C
+
+    iput-object v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mWordBuilder:[C
+
+    .line 68
+    iput-object p1, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mContext:Landroid/content/Context;
+
+    .line 69
+    invoke-virtual {p0}, Lcom/android/inputmethod/latin/ExpandableDictionary;->clearDictionary()V
+
+    .line 70
+    new-array v0, v1, [[I
+
+    iput-object v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mCodes:[[I
+
+    .line 71
+    return-void
+.end method
+
+.method private addWordRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Ljava/lang/String;II)V
+    .registers 13
+    .parameter "children"
+    .parameter "word"
+    .parameter "depth"
+    .parameter "frequency"
+
+    .prologue
+    const/16 v7, 0xff
+
+    .line 88
+    invoke-virtual {p2}, Ljava/lang/String;->length()I
+
+    move-result v5
+
+    .line 89
+    .local v5, wordLength:I
+    invoke-virtual {p2, p3}, Ljava/lang/String;->charAt(I)C
+
+    move-result v0
+
+    .line 91
+    .local v0, c:C
+    iget v2, p1, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;->length:I
+
+    .line 92
+    .local v2, childrenLength:I
+    const/4 v1, 0x0
+
+    .line 93
+    .local v1, childNode:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    const/4 v3, 0x0
+
+    .line 94
+    .local v3, found:Z
+    const/4 v4, 0x0
+
+    .local v4, i:I
+    :goto_f
+    if-ge v4, v2, :cond_1a
+
+    .line 95
+    iget-object v6, p1, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;->data:[Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+
+    aget-object v1, v6, v4
+
+    .line 96
+    iget-char v6, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->code:C
+
+    if-ne v6, v0, :cond_3c
+
+    .line 97
+    const/4 v3, 0x1
+
+    .line 101
+    :cond_1a
+    if-nez v3, :cond_26
+
+    .line 102
+    new-instance v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+
+    .end local v1           #childNode:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    invoke-direct {v1}, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;-><init>()V
+
+    .line 103
+    .restart local v1       #childNode:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    iput-char v0, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->code:C
+
+    .line 104
+    invoke-virtual {p1, v1}, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;->add(Lcom/android/inputmethod/latin/ExpandableDictionary$Node;)V
+
+    .line 106
+    :cond_26
+    add-int/lit8 v6, p3, 0x1
+
+    if-ne v5, v6, :cond_3f
+
+    .line 108
+    const/4 v6, 0x1
+
+    iput-boolean v6, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->terminal:Z
+
+    .line 109
+    iget v6, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->frequency:I
+
+    invoke-static {p4, v6}, Ljava/lang/Math;->max(II)I
+
+    move-result v6
+
+    iput v6, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->frequency:I
+
+    .line 110
+    iget v6, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->frequency:I
+
+    if-le v6, v7, :cond_3b
+
+    iput v7, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->frequency:I
+
+    .line 117
+    :cond_3b
+    :goto_3b
+    return-void
+
+    .line 94
+    :cond_3c
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_f
+
+    .line 113
+    :cond_3f
+    iget-object v6, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->children:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    if-nez v6, :cond_4a
+
+    .line 114
+    new-instance v6, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    invoke-direct {v6}, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;-><init>()V
+
+    iput-object v6, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->children:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    .line 116
+    :cond_4a
+    iget-object v6, v1, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->children:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    add-int/lit8 v7, p3, 0x1
+
+    invoke-direct {p0, v6, p2, v7, p4}, Lcom/android/inputmethod/latin/ExpandableDictionary;->addWordRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Ljava/lang/String;II)V
+
+    goto :goto_3b
+.end method
+
+.method private getWordFrequencyRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Ljava/lang/CharSequence;II)I
+    .registers 13
+    .parameter "children"
+    .parameter "word"
+    .parameter "offset"
+    .parameter "length"
+
+    .prologue
+    const/4 v7, -0x1
+
+    .line 154
+    iget v0, p1, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;->length:I
+
+    .line 155
+    .local v0, count:I
+    invoke-interface {p2, p3}, Ljava/lang/CharSequence;->charAt(I)C
+
+    move-result v1
+
+    .line 156
+    .local v1, currentChar:C
+    const/4 v3, 0x0
+
+    .local v3, j:I
+    :goto_8
+    if-ge v3, v0, :cond_31
+
+    .line 157
+    iget-object v5, p1, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;->data:[Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+
+    aget-object v4, v5, v3
+
+    .line 158
+    .local v4, node:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    iget-char v5, v4, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->code:C
+
+    if-ne v5, v1, :cond_2e
+
+    .line 159
+    const/4 v5, 0x1
+
+    sub-int v5, p4, v5
+
+    if-ne p3, v5, :cond_1e
+
+    .line 160
+    iget-boolean v5, v4, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->terminal:Z
+
+    if-eqz v5, :cond_2e
+
+    .line 161
+    iget v5, v4, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->frequency:I
+
+    .line 171
+    .end local v4           #node:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    :goto_1d
+    return v5
+
+    .line 164
+    .restart local v4       #node:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    :cond_1e
+    iget-object v5, v4, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->children:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    if-eqz v5, :cond_2e
+
+    .line 165
+    iget-object v5, v4, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->children:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    add-int/lit8 v6, p3, 0x1
+
+    invoke-direct {p0, v5, p2, v6, p4}, Lcom/android/inputmethod/latin/ExpandableDictionary;->getWordFrequencyRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Ljava/lang/CharSequence;II)I
+
+    move-result v2
+
+    .line 166
+    .local v2, freq:I
+    if-le v2, v7, :cond_2e
+
+    move v5, v2
+
+    goto :goto_1d
+
+    .line 156
+    .end local v2           #freq:I
+    :cond_2e
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_8
+
+    .end local v4           #node:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    :cond_31
+    move v5, v7
+
+    .line 171
+    goto :goto_1d
+.end method
+
+.method static toLowerCase(C)C
+    .registers 2
+    .parameter "c"
+
+    .prologue
+    .line 281
+    sget-object v0, Lcom/android/inputmethod/latin/ExpandableDictionary;->BASE_CHARS:[C
+
+    array-length v0, v0
+
+    if-ge p0, v0, :cond_9
+
+    .line 282
+    sget-object v0, Lcom/android/inputmethod/latin/ExpandableDictionary;->BASE_CHARS:[C
+
+    aget-char p0, v0, p0
+
+    .line 284
+    :cond_9
+    const/16 v0, 0x41
+
+    if-lt p0, v0, :cond_15
+
+    const/16 v0, 0x5a
+
+    if-gt p0, v0, :cond_15
+
+    .line 285
+    or-int/lit8 v0, p0, 0x20
+
+    int-to-char p0, v0
+
+    .line 289
+    :cond_14
+    :goto_14
+    return p0
+
+    .line 286
+    :cond_15
+    const/16 v0, 0x7f
+
+    if-le p0, v0, :cond_14
+
+    .line 287
+    invoke-static {p0}, Ljava/lang/Character;->toLowerCase(C)C
+
+    move-result p0
+
+    goto :goto_14
+.end method
+
+
+# virtual methods
+.method public addWord(Ljava/lang/String;I)V
+    .registers 5
+    .parameter "word"
+    .parameter "frequency"
+
+    .prologue
+    .line 82
+    iget-object v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mRoots:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    const/4 v1, 0x0
+
+    invoke-direct {p0, v0, p1, v1, p2}, Lcom/android/inputmethod/latin/ExpandableDictionary;->addWordRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Ljava/lang/String;II)V
+
+    .line 83
+    return-void
+.end method
+
+.method protected clearDictionary()V
+    .registers 2
+
+    .prologue
+    .line 277
+    new-instance v0, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    invoke-direct {v0}, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;-><init>()V
+
+    iput-object v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mRoots:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    .line 278
+    return-void
+.end method
+
+.method getContext()Landroid/content/Context;
+    .registers 2
+
+    .prologue
+    .line 74
+    iget-object v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mContext:Landroid/content/Context;
+
+    return-object v0
+.end method
+
+.method getMaxWordLength()I
+    .registers 2
+
+    .prologue
+    .line 78
+    const/16 v0, 0x20
+
+    return v0
+.end method
+
+.method public getWordFrequency(Ljava/lang/CharSequence;)I
+    .registers 5
+    .parameter "word"
+
+    .prologue
+    .line 146
+    iget-object v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mRoots:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    const/4 v1, 0x0
+
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    move-result v2
+
+    invoke-direct {p0, v0, p1, v1, v2}, Lcom/android/inputmethod/latin/ExpandableDictionary;->getWordFrequencyRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Ljava/lang/CharSequence;II)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getWords(Lcom/android/inputmethod/latin/WordComposer;Lcom/android/inputmethod/latin/Dictionary$WordCallback;[I)V
+    .registers 14
+    .parameter "codes"
+    .parameter "callback"
+    .parameter "nextLettersFrequencies"
+
+    .prologue
+    const/4 v6, 0x1
+
+    const/4 v4, 0x0
+
+    .line 122
+    invoke-virtual {p1}, Lcom/android/inputmethod/latin/WordComposer;->size()I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mInputLength:I
+
+    .line 123
+    iput-object p3, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mNextLettersFrequencies:[I
+
+    .line 124
+    iget-object v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mCodes:[[I
+
+    array-length v0, v0
+
+    iget v1, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mInputLength:I
+
+    if-ge v0, v1, :cond_17
+
+    iget v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mInputLength:I
+
+    new-array v0, v0, [[I
+
+    iput-object v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mCodes:[[I
+
+    .line 126
+    :cond_17
+    const/4 v8, 0x0
+
+    .local v8, i:I
+    :goto_18
+    iget v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mInputLength:I
+
+    if-ge v8, v0, :cond_27
+
+    .line 127
+    iget-object v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mCodes:[[I
+
+    invoke-virtual {p1, v8}, Lcom/android/inputmethod/latin/WordComposer;->getCodesAt(I)[I
+
+    move-result-object v1
+
+    aput-object v1, v0, v8
+
+    .line 126
+    add-int/lit8 v8, v8, 0x1
+
+    goto :goto_18
+
+    .line 129
+    :cond_27
+    iget v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mInputLength:I
+
+    mul-int/lit8 v0, v0, 0x3
+
+    iput v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mMaxDepth:I
+
+    .line 130
+    iget-object v1, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mRoots:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    iget-object v3, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mWordBuilder:[C
+
+    const/4 v8, -0x1
+
+    move-object v0, p0
+
+    move-object v2, p1
+
+    move v5, v4
+
+    move v7, v4
+
+    move-object v9, p2
+
+    invoke-virtual/range {v0 .. v9}, Lcom/android/inputmethod/latin/ExpandableDictionary;->getWordsRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Lcom/android/inputmethod/latin/WordComposer;[CIZIIILcom/android/inputmethod/latin/Dictionary$WordCallback;)V
+
+    .line 131
+    .end local v8           #i:I
+    const/4 v8, 0x0
+
+    .restart local v8       #i:I
+    :goto_3b
+    iget v0, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mInputLength:I
+
+    if-ge v8, v0, :cond_4e
+
+    .line 132
+    iget-object v1, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mRoots:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    iget-object v3, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mWordBuilder:[C
+
+    move-object v0, p0
+
+    move-object v2, p1
+
+    move v5, v4
+
+    move v7, v4
+
+    move-object v9, p2
+
+    invoke-virtual/range {v0 .. v9}, Lcom/android/inputmethod/latin/ExpandableDictionary;->getWordsRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Lcom/android/inputmethod/latin/WordComposer;[CIZIIILcom/android/inputmethod/latin/Dictionary$WordCallback;)V
+
+    .line 131
+    add-int/lit8 v8, v8, 0x1
+
+    goto :goto_3b
+
+    .line 134
+    :cond_4e
+    return-void
+.end method
+
+.method protected getWordsRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Lcom/android/inputmethod/latin/WordComposer;[CIZIIILcom/android/inputmethod/latin/Dictionary$WordCallback;)V
+    .registers 39
+    .parameter "roots"
+    .parameter "codes"
+    .parameter "word"
+    .parameter "depth"
+    .parameter "completion"
+    .parameter "snr"
+    .parameter "inputIndex"
+    .parameter "skipPos"
+    .parameter "callback"
+
+    .prologue
+    .line 196
+    move-object/from16 v0, p1
+
+    iget v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;->length:I
+
+    move/from16 v19, v0
+
+    .line 197
+    .local v19, count:I
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mInputLength:I
+
+    move/from16 v18, v0
+
+    .line 199
+    .local v18, codeSize:I
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mMaxDepth:I
+
+    move v5, v0
+
+    move/from16 v0, p4
+
+    move v1, v5
+
+    if-le v0, v1, :cond_17
+
+    .line 274
+    :cond_16
+    return-void
+
+    .line 202
+    :cond_17
+    const/16 v21, 0x0
+
+    .line 203
+    .local v21, currentChars:[I
+    move/from16 v0, v18
+
+    move/from16 v1, p7
+
+    if-gt v0, v1, :cond_a3
+
+    .line 204
+    const/16 p5, 0x1
+
+    .line 209
+    :goto_21
+    const/16 v24, 0x0
+
+    .local v24, i:I
+    :goto_23
+    move/from16 v0, v24
+
+    move/from16 v1, v19
+
+    if-ge v0, v1, :cond_16
+
+    .line 210
+    move-object/from16 v0, p1
+
+    iget-object v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;->data:[Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+
+    move-object v5, v0
+
+    aget-object v27, v5, v24
+
+    .line 211
+    .local v27, node:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    move-object/from16 v0, v27
+
+    iget-char v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->code:C
+
+    move/from16 v17, v0
+
+    .line 212
+    .local v17, c:C
+    invoke-static/range {v17 .. v17}, Lcom/android/inputmethod/latin/ExpandableDictionary;->toLowerCase(C)C
+
+    move-result v26
+
+    .line 213
+    .local v26, lowerC:C
+    move-object/from16 v0, v27
+
+    iget-boolean v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->terminal:Z
+
+    move/from16 v28, v0
+
+    .line 214
+    .local v28, terminal:Z
+    move-object/from16 v0, v27
+
+    iget-object v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->children:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    move-object v6, v0
+
+    .line 215
+    .local v6, children:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+    move-object/from16 v0, v27
+
+    iget v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary$Node;->frequency:I
+
+    move/from16 v23, v0
+
+    .line 216
+    .local v23, freq:I
+    if-eqz p5, :cond_ac
+
+    .line 217
+    aput-char v17, p3, p4
+
+    .line 218
+    if-eqz v28, :cond_89
+
+    .line 219
+    const/4 v5, 0x0
+
+    add-int/lit8 v7, p4, 0x1
+
+    mul-int v8, v23, p6
+
+    move-object/from16 v0, p9
+
+    move-object/from16 v1, p3
+
+    move v2, v5
+
+    move v3, v7
+
+    move v4, v8
+
+    invoke-interface {v0, v1, v2, v3, v4}, Lcom/android/inputmethod/latin/Dictionary$WordCallback;->addWord([CIII)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_16
+
+    .line 223
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mNextLettersFrequencies:[I
+
+    move-object v5, v0
+
+    if-eqz v5, :cond_89
+
+    move/from16 v0, p4
+
+    move/from16 v1, p7
+
+    if-lt v0, v1, :cond_89
+
+    if-gez p8, :cond_89
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mNextLettersFrequencies:[I
+
+    move-object v5, v0
+
+    array-length v5, v5
+
+    aget-char v7, p3, p7
+
+    if-le v5, v7, :cond_89
+
+    .line 225
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mNextLettersFrequencies:[I
+
+    move-object v5, v0
+
+    aget-char v7, p3, p7
+
+    aget v8, v5, v7
+
+    add-int/lit8 v8, v8, 0x1
+
+    aput v8, v5, v7
+
+    .line 228
+    :cond_89
+    if-eqz v6, :cond_a0
+
+    .line 229
+    add-int/lit8 v9, p4, 0x1
+
+    move-object/from16 v5, p0
+
+    move-object/from16 v7, p2
+
+    move-object/from16 v8, p3
+
+    move/from16 v10, p5
+
+    move/from16 v11, p6
+
+    move/from16 v12, p7
+
+    move/from16 v13, p8
+
+    move-object/from16 v14, p9
+
+    invoke-virtual/range {v5 .. v14}, Lcom/android/inputmethod/latin/ExpandableDictionary;->getWordsRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Lcom/android/inputmethod/latin/WordComposer;[CIZIIILcom/android/inputmethod/latin/Dictionary$WordCallback;)V
+
+    .line 209
+    :cond_a0
+    :goto_a0
+    add-int/lit8 v24, v24, 0x1
+
+    goto :goto_23
+
+    .line 206
+    .end local v6           #children:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+    .end local v17           #c:C
+    .end local v23           #freq:I
+    .end local v24           #i:I
+    .end local v26           #lowerC:C
+    .end local v27           #node:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    .end local v28           #terminal:Z
+    :cond_a3
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mCodes:[[I
+
+    move-object v5, v0
+
+    aget-object v21, v5, p7
+
+    goto/16 :goto_21
+
+    .line 232
+    .restart local v6       #children:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+    .restart local v17       #c:C
+    .restart local v23       #freq:I
+    .restart local v24       #i:I
+    .restart local v26       #lowerC:C
+    .restart local v27       #node:Lcom/android/inputmethod/latin/ExpandableDictionary$Node;
+    .restart local v28       #terminal:Z
+    :cond_ac
+    const/16 v5, 0x27
+
+    move/from16 v0, v17
+
+    move v1, v5
+
+    if-ne v0, v1, :cond_ba
+
+    const/4 v5, 0x0
+
+    aget v5, v21, v5
+
+    const/16 v7, 0x27
+
+    if-ne v5, v7, :cond_c0
+
+    :cond_ba
+    move/from16 v0, p4
+
+    move/from16 v1, p8
+
+    if-ne v0, v1, :cond_da
+
+    .line 234
+    :cond_c0
+    aput-char v17, p3, p4
+
+    .line 235
+    if-eqz v6, :cond_a0
+
+    .line 236
+    add-int/lit8 v9, p4, 0x1
+
+    move-object/from16 v5, p0
+
+    move-object/from16 v7, p2
+
+    move-object/from16 v8, p3
+
+    move/from16 v10, p5
+
+    move/from16 v11, p6
+
+    move/from16 v12, p7
+
+    move/from16 v13, p8
+
+    move-object/from16 v14, p9
+
+    invoke-virtual/range {v5 .. v14}, Lcom/android/inputmethod/latin/ExpandableDictionary;->getWordsRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Lcom/android/inputmethod/latin/WordComposer;[CIZIIILcom/android/inputmethod/latin/Dictionary$WordCallback;)V
+
+    goto :goto_a0
+
+    .line 241
+    :cond_da
+    if-ltz p8, :cond_14b
+
+    const/4 v5, 0x1
+
+    move/from16 v16, v5
+
+    .line 242
+    .local v16, alternativesSize:I
+    :goto_df
+    const/16 v25, 0x0
+
+    .local v25, j:I
+    :goto_e1
+    move/from16 v0, v25
+
+    move/from16 v1, v16
+
+    if-ge v0, v1, :cond_a0
+
+    .line 243
+    if-lez v25, :cond_152
+
+    const/4 v5, 0x1
+
+    move v15, v5
+
+    .line 244
+    .local v15, addedAttenuation:I
+    :goto_eb
+    aget v20, v21, v25
+
+    .line 245
+    .local v20, currentChar:I
+    const/4 v5, -0x1
+
+    move/from16 v0, v20
+
+    move v1, v5
+
+    if-eq v0, v1, :cond_a0
+
+    .line 248
+    move/from16 v0, v20
+
+    move/from16 v1, v26
+
+    if-eq v0, v1, :cond_ff
+
+    move/from16 v0, v20
+
+    move/from16 v1, v17
+
+    if-ne v0, v1, :cond_148
+
+    .line 249
+    :cond_ff
+    aput-char v17, p3, p4
+
+    .line 251
+    add-int/lit8 v5, p7, 0x1
+
+    move/from16 v0, v18
+
+    move v1, v5
+
+    if-ne v0, v1, :cond_155
+
+    .line 252
+    if-eqz v28, :cond_132
+
+    .line 253
+    add-int/lit8 v5, p4, 0x1
+
+    invoke-virtual/range {p2 .. p2}, Lcom/android/inputmethod/latin/WordComposer;->getTypedWord()Ljava/lang/CharSequence;
+
+    move-result-object v7
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p3
+
+    move v2, v5
+
+    move-object v3, v7
+
+    invoke-virtual {v0, v1, v2, v3}, Lcom/android/inputmethod/latin/ExpandableDictionary;->same([CILjava/lang/CharSequence;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_132
+
+    .line 255
+    mul-int v5, v23, p6
+
+    mul-int v22, v5, v15
+
+    .line 256
+    .local v22, finalFreq:I
+    if-gez p8, :cond_124
+
+    mul-int/lit8 v22, v22, 0x2
+
+    .line 257
+    :cond_124
+    const/4 v5, 0x0
+
+    add-int/lit8 v7, p4, 0x1
+
+    move-object/from16 v0, p9
+
+    move-object/from16 v1, p3
+
+    move v2, v5
+
+    move v3, v7
+
+    move/from16 v4, v22
+
+    invoke-interface {v0, v1, v2, v3, v4}, Lcom/android/inputmethod/latin/Dictionary$WordCallback;->addWord([CIII)Z
+
+    .line 260
+    .end local v22           #finalFreq:I
+    :cond_132
+    if-eqz v6, :cond_148
+
+    .line 261
+    add-int/lit8 v9, p4, 0x1
+
+    const/4 v10, 0x1
+
+    mul-int v11, p6, v15
+
+    add-int/lit8 v12, p7, 0x1
+
+    move-object/from16 v5, p0
+
+    move-object/from16 v7, p2
+
+    move-object/from16 v8, p3
+
+    move/from16 v13, p8
+
+    move-object/from16 v14, p9
+
+    invoke-virtual/range {v5 .. v14}, Lcom/android/inputmethod/latin/ExpandableDictionary;->getWordsRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Lcom/android/inputmethod/latin/WordComposer;[CIZIIILcom/android/inputmethod/latin/Dictionary$WordCallback;)V
+
+    .line 242
+    :cond_148
+    :goto_148
+    add-int/lit8 v25, v25, 0x1
+
+    goto :goto_e1
+
+    .line 241
+    .end local v15           #addedAttenuation:I
+    .end local v16           #alternativesSize:I
+    .end local v20           #currentChar:I
+    .end local v25           #j:I
+    :cond_14b
+    move-object/from16 v0, v21
+
+    array-length v0, v0
+
+    move v5, v0
+
+    move/from16 v16, v5
+
+    goto :goto_df
+
+    .line 243
+    .restart local v16       #alternativesSize:I
+    .restart local v25       #j:I
+    :cond_152
+    const/4 v5, 0x2
+
+    move v15, v5
+
+    goto :goto_eb
+
+    .line 265
+    .restart local v15       #addedAttenuation:I
+    .restart local v20       #currentChar:I
+    :cond_155
+    if-eqz v6, :cond_148
+
+    .line 266
+    add-int/lit8 v9, p4, 0x1
+
+    const/4 v10, 0x0
+
+    mul-int v11, p6, v15
+
+    add-int/lit8 v12, p7, 0x1
+
+    move-object/from16 v5, p0
+
+    move-object/from16 v7, p2
+
+    move-object/from16 v8, p3
+
+    move/from16 v13, p8
+
+    move-object/from16 v14, p9
+
+    invoke-virtual/range {v5 .. v14}, Lcom/android/inputmethod/latin/ExpandableDictionary;->getWordsRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Lcom/android/inputmethod/latin/WordComposer;[CIZIIILcom/android/inputmethod/latin/Dictionary$WordCallback;)V
+
+    goto :goto_148
+.end method
+
+.method public declared-synchronized isValidWord(Ljava/lang/CharSequence;)Z
+    .registers 7
+    .parameter "word"
+
+    .prologue
+    const/4 v4, 0x0
+
+    .line 138
+    monitor-enter p0
+
+    :try_start_2
+    iget-object v1, p0, Lcom/android/inputmethod/latin/ExpandableDictionary;->mRoots:Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;
+
+    const/4 v2, 0x0
+
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    move-result v3
+
+    invoke-direct {p0, v1, p1, v2, v3}, Lcom/android/inputmethod/latin/ExpandableDictionary;->getWordFrequencyRec(Lcom/android/inputmethod/latin/ExpandableDictionary$NodeArray;Ljava/lang/CharSequence;II)I
+    :try_end_c
+    .catchall {:try_start_2 .. :try_end_c} :catchall_15
+
+    move-result v0
+
+    .line 139
+    .local v0, freq:I
+    const/4 v1, -0x1
+
+    if-le v0, v1, :cond_13
+
+    const/4 v1, 0x1
+
+    :goto_11
+    monitor-exit p0
+
+    return v1
+
+    :cond_13
+    move v1, v4
+
+    goto :goto_11
+
+    .line 138
+    .end local v0           #freq:I
+    :catchall_15
+    move-exception v1
+
+    monitor-exit p0
+
+    throw v1
+.end method

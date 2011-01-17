@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keyboard skb_template="@xml/skb_template1" skb_cache_flag="true" skb_sticky_flag="false" width="14.286%p" height="25%p" key_type="0" repeat="false" balloon="true">
+    <row>
+        <key label=":-)" icon="@drawable/emotion_icon_01" icon_popup="@drawable/emotion_icon_01_popup" />
+        <key label=";-)" icon="@drawable/emotion_icon_02" icon_popup="@drawable/emotion_icon_02_popup" />
+        <key label=":-D" icon="@drawable/emotion_icon_03" icon_popup="@drawable/emotion_icon_03_popup" />
+        <key label=":-P" icon="@drawable/emotion_icon_04" icon_popup="@drawable/emotion_icon_04_popup" />
+        <key label=":-*" icon="@drawable/emotion_icon_05" icon_popup="@drawable/emotion_icon_05_popup" />
+        <key label=":-(" icon="@drawable/emotion_icon_06" icon_popup="@drawable/emotion_icon_06_popup" />
+        <key label=":\'(" icon="@drawable/emotion_icon_07" icon_popup="@drawable/emotion_icon_07_popup" />
+    </row>
+    <row>
+        <key label=":S" icon="@drawable/emotion_icon_08" icon_popup="@drawable/emotion_icon_08_popup" />
+        <key label=":O" icon="@drawable/emotion_icon_09" icon_popup="@drawable/emotion_icon_09_popup" />
+        <key label="B-)" icon="@drawable/emotion_icon_10" icon_popup="@drawable/emotion_icon_10_popup" />
+        <key label="o_O" icon="@drawable/emotion_icon_11" icon_popup="@drawable/emotion_icon_11_popup" />
+        <key label="^o^" icon="@drawable/emotion_icon_12" icon_popup="@drawable/emotion_icon_12_popup" />
+        <key label="T_T" icon="@drawable/emotion_icon_13" icon_popup="@drawable/emotion_icon_13_popup" />
+        <key label="=.=!" icon="@drawable/emotion_icon_14" icon_popup="@drawable/emotion_icon_14_popup" />
+    </row>
+    <row>
+        <key label="^_^" icon="@drawable/emotion_icon_15" icon_popup="@drawable/emotion_icon_15_popup" />
+        <key label="囧" icon="@drawable/emotion_icon_16" icon_popup="@drawable/emotion_icon_16_popup" />
+        <key label=">_&amp;lt;" icon="@drawable/emotion_icon_17" icon_popup="@drawable/emotion_icon_17_popup" />
+        <key label="╰_╯" icon="@drawable/emotion_icon_18" icon_popup="@drawable/emotion_icon_18_popup" />
+        <key label="﹁_﹁" icon="@drawable/emotion_icon_19" icon_popup="@drawable/emotion_icon_19_popup" />
+        <key label="-_-z" icon="@drawable/emotion_icon_20" icon_popup="@drawable/emotion_icon_20_popup" />
+        <key id="3" />
+    </row>
+    <row>
+        <key label="\@_@" icon="@drawable/emotion_icon_21" icon_popup="@drawable/emotion_icon_21_popup" />
+        <key label="$_$" icon="@drawable/emotion_icon_22" icon_popup="@drawable/emotion_icon_22_popup" />
+        <key label="^_-" icon="@drawable/emotion_icon_23" icon_popup="@drawable/emotion_icon_23_popup" />
+        <key label="→_→" icon="@drawable/emotion_icon_24" icon_popup="@drawable/emotion_icon_24_popup" />
+        <key label="Orz" icon="@drawable/emotion_icon_25" icon_popup="@drawable/emotion_icon_25_popup" />
+        <key label="(x_x)" icon="@drawable/emotion_icon_26" icon_popup="@drawable/emotion_icon_26_popup" />
+        <key code="-6" key_type="3" repeat="true" icon="@drawable/smiley_icon" icon_popup="@drawable/smiley_popup_icon" />
+    </row>
+</keyboard>

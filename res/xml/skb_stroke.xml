@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keyboard skb_template="@xml/skb_template2" skb_cache_flag="true" width="20%p" height="33.334%p" key_type="0" repeat="false" balloon="true">
+    <row start_pos_x="0.938%p">
+        <key code="-7" width="16.876%p" key_type="1" label="123" />
+        <key code="36" start_pos_x="20%p" label="一" balloon="false" />
+        <key code="47" label="丨" balloon="false" />
+        <key code="44" label="丿" balloon="false" />
+        <key width="16.876%p" start_pos_x="82.188%p" label="？">
+            <toggle_state key_type="1" state_id="@string/toggle_cn_cand" label="\'" icon="@drawable/splitter_icon" icon_popup="@drawable/splitter_popup_icon" />
+        </key>
+    </row>
+    <row start_pos_x="0.938%p">
+        <key code="-11" width="16.876%p" key_type="1" repeat="true" label="返回" />
+        <key code="42" start_pos_x="20%p" label="丶" balloon="false" />
+        <key code="54" icon="@drawable/stroke_z" icon_popup="@drawable/stroke_z_popup" balloon="false" />
+        <key code="52" label="通配符" key_type="1" />
+        <key id="2" />
+    </row>
+    <row start_pos_x="0.938%p">
+        <key code="-3" width="16.876%p" key_type="1" label="\@#..." repeat="true" />
+        <key label="，" start_pos_x="20%p" icon="@drawable/comma_full_icon" icon_popup="@drawable/comma_full_popup_icon">
+            <toggle_state state_id="@string/toggle_url" label="/" />
+            <toggle_state state_id="@string/toggle_emailaddress" label="\@" />
+        </key>
+        <key id="3" />
+        <key label="。" icon="@drawable/period_full_icon" icon_popup="@drawable/period_full_popup_icon">
+            <toggle_state state_id="@string/toggle_url" label="." />
+            <toggle_state state_id="@string/toggle_emailaddress" label="." />
+        </key>
+        <key id="1" />
+    </row>
+</keyboard>

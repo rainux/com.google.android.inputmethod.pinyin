@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <dimen name="candview_background_padding">0.0dip</dimen>
+    <dimen name="bubble_pointer_offset">22.0dip</dimen>
+</resources>

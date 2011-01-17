@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen android:title="@string/setting_title"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/setting_update_category_title" android:key="@string/setting_update_category_key">
+        <CheckBoxPreference android:persistent="false" android:title="@string/setting_update_enabled_title" android:key="@string/setting_update_enabled_key" android:summaryOn="@string/setting_enabled_title" android:summaryOff="@string/setting_disabled_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/setting_sync_category_title">
+        <CheckBoxPreference android:persistent="false" android:title="@string/setting_sync_enabled_title" android:key="@string/setting_sync_enabled_key" android:summaryOn="@string/setting_enabled_title" android:summaryOff="@string/setting_disabled_title" />
+        <Preference android:persistent="false" android:title="@string/setting_sync_now_title" android:key="@string/setting_sync_now_key" android:dependency="@string/setting_sync_enabled_key" />
+        <Preference android:persistent="false" android:title="@string/setting_sync_clear_title" android:key="@string/setting_sync_clear_key" android:dependency="@string/setting_sync_enabled_key" />
+    </PreferenceCategory>
+</PreferenceScreen>
