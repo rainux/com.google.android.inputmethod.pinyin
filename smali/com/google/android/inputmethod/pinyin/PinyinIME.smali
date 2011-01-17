@@ -1751,24 +1751,12 @@
     .line 415
     invoke-direct {p0, v7}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->resetToIdleState(Z)V
 
-    .line 417
-    const/16 v0, 0xf7
-
-    .line 421
-    .local v0, allMetaState:I
-    invoke-virtual {p0}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->getCurrentInputConnection()Landroid/view/inputmethod/InputConnection;
-
-    move-result-object v4
-
-    invoke-interface {v4, v0}, Landroid/view/inputmethod/InputConnection;->clearMetaKeyStates(I)Z
-
     move v4, v8
 
     .line 422
     goto :goto_e
 
     .line 427
-    .end local v0           #allMetaState:I
     :cond_36
     iget-object v4, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mInputModeSwitcher:Lcom/google/android/inputmethod/pinyin/InputModeSwitcher;
 
@@ -2623,6 +2611,7 @@
 
     .line 712
     :goto_15
+    invoke-direct {p0}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->resetAllMetaState()V
     return v2
 
     .line 657
@@ -2667,7 +2656,7 @@
     :returnFalse_0
     move v2, v5
 
-    goto :goto_15
+    return v2
 
     .line 663
     :cond_2a
@@ -4133,6 +4122,8 @@
 
     .line 1176
     :cond_7
+    invoke-direct {p0}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->resetAllMetaState()V
+
     sget-object v0, Lcom/google/android/inputmethod/pinyin/PinyinIME$ImeState;->STATE_IDLE:Lcom/google/android/inputmethod/pinyin/PinyinIME$ImeState;
 
     iput-object v0, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mImeState:Lcom/google/android/inputmethod/pinyin/PinyinIME$ImeState;
@@ -8457,5 +8448,21 @@
     invoke-virtual {v1}, Lcom/google/android/inputmethod/pinyin/SkbContainer;->updateInputMode()V
 
     .line 1946
+    return-void
+.end method
+
+.method private resetAllMetaState()V
+    .registers 3
+
+    .line 417
+    const/16 v0, 0xf7
+
+    .line 421
+    invoke-virtual {p0}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->getCurrentInputConnection()Landroid/view/inputmethod/InputConnection;
+
+    move-result-object v1
+
+    invoke-interface {v1, v0}, Landroid/view/inputmethod/InputConnection;->clearMetaKeyStates(I)Z
+
     return-void
 .end method
