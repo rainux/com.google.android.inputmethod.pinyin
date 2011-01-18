@@ -51,7 +51,9 @@
             <toggle_state state_id="@string/toggle_en_sym1" label="!" />
         </key>
         <key code="62" key_type="5" width="26.527%p" />
-        <key label="." key_type="0" width="10.205%p" />
+        <key label="·" key_type="0" width="10.205%p">
+            <toggle_state state_id="@string/toggle_en_sym1" label="." />
+        </key>
         <key id="14" />
         <key code="-6" key_type="2" width="14.286%p" icon="@drawable/smiley_icon" icon_popup="@drawable/smiley_popup_icon" />
     </row>
