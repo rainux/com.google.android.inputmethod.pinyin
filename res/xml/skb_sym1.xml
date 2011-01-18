@@ -8,7 +8,12 @@
         <key label="、" icon="@drawable/dun_icon" icon_popup="@drawable/dun_popup_icon">
             <toggle_state state_id="@string/toggle_en_sym1" label="\\" />
         </key>
-        <keys splitter="|" labels="(|)" />
+        <key label="（">
+            <toggle_state state_id="@string/toggle_en_sym1" label="(" />
+        </key>
+        <key label="）">
+            <toggle_state state_id="@string/toggle_en_sym1" label=")" />
+        </key>
     </row>
     <row width="10.205%p">
         <key code="-5" width="14.286%p" key_type="2" label="更多" />
