@@ -2642,13 +2642,13 @@
     #     keyCode == KeyEvent.KEYCODE_ALT_LEFT ||
     #     keyCode == KeyEvent.KEYCODE_ALT_RIGHT)
     const/16 v2, 0x43
-    if-eq p2, v2, :returnFalse_0
+    if-eq p2, v2, :checkIfSkb_0
 
     const/16 v2, 0x39
-    if-eq p2, v2, :returnFalse_0
+    if-eq p2, v2, :checkIfSkb_0
 
     const/16 v2, 0x3a
-    if-eq p2, v2, :returnFalse_0
+    if-eq p2, v2, :checkIfSkb_0
 
     goto :cond_2f
 
@@ -2659,7 +2659,14 @@
     return v2
 
     .line 663
-    :cond_2a
+    :checkIfSkb_0
+    iget-object v2, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mInputModeSwitcher:Lcom/google/android/inputmethod/pinyin/InputModeSwitcher;
+
+    invoke-virtual {v2}, Lcom/google/android/inputmethod/pinyin/InputModeSwitcher;->isChineseTextWithSkb()Z
+    move-result v2
+
+    if-eqz v2, :returnFalse_0
+
     invoke-direct {p0, p2}, Lcom/google/android/inputmethod/pinyin/PinyinIME;->simulateKeyEventDownUp(I)V
 
     # return true;
