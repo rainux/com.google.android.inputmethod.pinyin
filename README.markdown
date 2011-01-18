@@ -1,12 +1,15 @@
 ## 目的 ##
 
-使用 [apktool](http://code.google.com/p/android-apktool/) 对 Google 拼音输入法 Android 版进行反向工程，在 Dalvik JVM 汇编层级微调修改它，使其更适合日常使用。
+使用 [apktool](http://code.google.com/p/android-apktool/) 对 Google 拼音输入法 Android 版进行反向工程[注1]，在 Dalvik JVM 汇编层级微调修改它，使其更适合日常使用。
+
+注1：实际上不是真正完整的反向工程，后来有大量借助 [Android Open Source Project](http://source.android.com/) 中 Google 拼音输入法 1.0.0 的 Java 源代码理解反汇编得到的 smali 代码。
 
 ## 问题修正 ##
 
 * 中文模式下硬件键盘上某些标点符号没有被正确映射为中文（全角）形态，尤其是在 T-Mobile G2 上。
 * 中文模式下在软键盘未初始化时使用硬件键盘 Enter 键会导致 Google 拼音崩溃。
 * 中文模式下软键盘上的圆括号不是中文（全角）形态。
+* 软键盘上的 & 和 < 符号被不正确地转义成了 &amp; 和 &lt;。（MOD 版引入的问题。）
 
 ## 细节改进 ##
 
