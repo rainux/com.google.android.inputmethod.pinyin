@@ -1,6 +1,6 @@
 #!/bin/bash
 
-package_name='Google_Pinyin_IME_v1.3.4_MOD'
+package_name='Google_Pinyin_IME_v1.3.4_MOD_v3'
 package_apk=$package_name.apk
 
 rm -rf dist

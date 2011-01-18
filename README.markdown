@@ -21,6 +21,6 @@
 
 ## 如何使用 ##
 
-下载 [Google 拼音输入法 1.3.4 MOD v2](https://github.com/downloads/rainux/com.google.android.inputmethod.pinyin/Google_Pinyin_IME_v1.3.4_MOD_v2.apk)，使用 adb 工具或 Android 的 Package Manager 安装。或者 git clone 此 smali 源代码仓库自己用 apktool 编译生成 .apk 文件。
+下载 [Google 拼音输入法 1.3.4 MOD v3](https://github.com/downloads/rainux/com.google.android.inputmethod.pinyin/Google_Pinyin_IME_v1.3.4_MOD_v3.apk)，使用 adb 工具或 Android 的 Package Manager 安装。或者 git clone 此 smali 源代码仓库自己用 apktool 编译生成 .apk 文件。
 
 注意：**安装 MOD 版本之前必须先卸载官方版本。**
