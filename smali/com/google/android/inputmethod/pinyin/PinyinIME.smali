@@ -2721,6 +2721,8 @@
     .line 676
     iget-object v2, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mSkbContainer:Lcom/google/android/inputmethod/pinyin/SkbContainer;
 
+    if-eqz v2, :goto_42
+
     invoke-virtual {v2}, Lcom/google/android/inputmethod/pinyin/SkbContainer;->updateInputMode()V
 
     goto :goto_42
@@ -3826,6 +3828,7 @@
 
     .line 932
     iget-object v3, p0, Lcom/google/android/inputmethod/pinyin/PinyinIME;->mSkbContainer:Lcom/google/android/inputmethod/pinyin/SkbContainer;
+    if-eqz v3, :goto_108
 
     invoke-virtual {v3}, Lcom/google/android/inputmethod/pinyin/SkbContainer;->updateInputMode()V
 
